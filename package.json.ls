@@ -1,7 +1,7 @@
 #!/usr/bin/env lsc -cj
 _: 'Do not edit, generated from package.json.ls'
 author: 'Zeljko Nesic'
-name: 'Svi Na Rad'
+name: 'SviNaRad'
 description: 'Frontend for Svinarad'
 version: '0.9.5'
 homepage: 'https://svinarad.com/'

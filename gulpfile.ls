@@ -23,6 +23,10 @@ bs = require \browser-sync .create!
 google-analytics = 'UA-6621805-2'
 var http-server
 
+gulp.task 'httpServer' ->
+  http-server := bs.init do
+    proxy: 'http://localhost:3474'
+    
 app-js = (app-name, root, task-name) ->
   gulp.task task-name, ->
     base = "./app/base/**/*.ls"
@@ -234,19 +238,18 @@ config-task = (root) ->
       .pipe gulp.dest "./#{root}/js"
 
   [task-name]
-  
+
 root = "_public"
 apps = <[clients providers admin]>
 
 indexs = index-tasks root, "website"
 
-client = gulp-tasks "clients" root
-provider = gulp-tasks "providers" root, true
+radnik = gulp-tasks "radnik" root
+poslodavac = gulp-tasks "poslodavac" root, true
 admin = gulp-tasks "admin" root, true
-canvas = gulp-tasks "canvas" root, true
 configuration = config-task root
 
-apps = client ++ provider ++ admin ++ canvas
+apps = radnik ++ poslodavac ++ admin
 all-tasks = configuration ++ indexs ++ apps
 clean-task = 'clean'
 gulp.task clean-task, (done) !->
@@ -266,7 +269,7 @@ gulp.task 'build' all-tasks, !->
 gulp.task 'dev' all-tasks, (done) ->
   gulp.start 'httpServer'
 
-  <[client provider admin canvas]>
+  <[radnik poslodavac admin]>
   |> map eyes-on-app
 
   eyes-for-index!
@@ -276,7 +279,6 @@ gulp.task 'dev' all-tasks, (done) ->
   }, ->
     done!
     process.exit!
-
 
 
 
@@ -308,8 +310,6 @@ gulp.task 'runtrials' ->
 gulp.task 'firetrials' <[blazerules compiletrials]> ->
   gulp.watch 'fire-trials.yaml' <[compiletrials]>
   gulp.watch 'rules.yaml' <[blazerules]>
-
-
 
 
 export gulp-deps = do

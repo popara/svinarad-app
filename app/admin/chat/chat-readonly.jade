@@ -1,9 +1,0 @@
-.chat-us
-  chatwindow(scroll-glue="", ng-if="model.room.length")
-    chatitem(ng-repeat="m in model.room", ng-class="m.who == model.client ? 'other': 'me'") 
-      .face
-      chatbubble 
-        p {{ m.what }}
-        timestamp {{ m.at | humanize }}
-      
-  h1(ng-hide="model.room.length") No Chat

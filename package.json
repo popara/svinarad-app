@@ -1,10 +1,10 @@
 {
   "_": "Do not edit, generated from package.json.ls",
   "author": "Zeljko Nesic",
-  "name": "JonnyWebapp",
-  "description": "Angular apps collection for Jonny Ibiza",
+  "name": "SviNaRad",
+  "description": "Frontend for Svinarad",
   "version": "0.9.5",
-  "homepage": "https://www.jonnyibiza.com/",
+  "homepage": "https://svinarad.com/",
   "engines": {
     "node": "0.10.x",
     "npm": "1.3.x"

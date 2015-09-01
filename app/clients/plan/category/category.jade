@@ -1,9 +1,0 @@
-nav.brand
-  .back(ui-sref="plan")
-  .title {{ options.name }}
-  button.icon
-
-
-block main
-  .narrow-container
-    small-venue(ng-repeat="(ven_id, entry) in model", entry="entry", venue="entry.venue", id="ven_id")

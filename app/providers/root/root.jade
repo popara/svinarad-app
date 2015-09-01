@@ -1,5 +1,0 @@
-root(ng-controller="RootController", layout="row")
-  section(layout="row", ng-show="auth")
-    md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id="left", md-is-locked-open="$mdMedia('gt-md')") 
-      include ../sidenav/sidenav
-  main(ui-view, ng-class="'{{ nowState }}'", autoscroll, flex)

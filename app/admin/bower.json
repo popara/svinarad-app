@@ -1,5 +1,5 @@
 {
-  "name": "Jonny Ibiza: admin",
+  "name": "Svi Na Rad: Admin",
   "version": "0.9.5",
   "main": "_public/js/app.js",
   "ignore": [
@@ -19,11 +19,7 @@
     "momentjs": "~2.10.2",
     "angularitics": "~0.18.0",
     "ng-fastclick": "~1.0.1",
-    "angular-elastic": "~2.4.2",
-    "angular-scroll-glue": "~2.0.5",
-    "angular-capitalize-filter": "~2.1.0",
-    "angular-scroll": "~0.7.0",
-    "angular-material-icons": "0.4.0",
-    "semantic-ui": "2.0.5"
+    "smooth-scroll": "1.0.1",
+    "fastclick": "~1.0.6"
   }
 }

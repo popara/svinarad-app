@@ -1,9 +1,0 @@
-h1 Nonpayers
-
-.ui.list
-  .item(ng-repeat="user in model")
-    i.large.lemon.middle.aligned.icon 
-    .content 
-      a.header(ui-sref="user({id: user.$id})") {{ user.name }}
-      .description {{ user.email }}
-      

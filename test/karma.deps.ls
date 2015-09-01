@@ -1,4 +1,4 @@
-export deps =  do
+deps =  do
   'karma': '^0.12.23'
   'karma-live-preprocessor': '^0.2.2'
   'karma-mocha': '~0.1.10'
@@ -13,3 +13,5 @@ export deps =  do
   "sinon-chai": "^2.7.0"
   'karma-should': '^0.0.1'
   'angular-mocks': '1.3.15'
+
+export deps 
