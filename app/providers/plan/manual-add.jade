@@ -1,0 +1,22 @@
+h3(ng-hide="entry.id") Add Manually 
+
+form(name="manual")
+  md-input-container
+    label Place name 
+    input(type="text", ng-model="entry.venue.name", ng-required="true")
+    
+  md-input-container
+    label Address
+    input(type="text", ng-model="entry.venue.address", ng-required="true")
+  
+  md-input-container 
+    label URL (optional)
+    input(type="text", ng-model="entry.venue.link")
+    
+  md-input-container 
+    label Note about {{ entry.venue.name }}
+    textarea(ng-model="entry.note", ng-required="true")
+    
+div(layout="row", layout-align="end center")
+  md-button.md-link(ng-click="cancel()") Cancel 
+  md-button.md-primary.md-raised(ng-disabled="manual.$invalid", ng-click="save()") Save

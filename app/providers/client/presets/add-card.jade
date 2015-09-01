@@ -1,0 +1,13 @@
+md-button.md-mini(ui-sref="^") Cancel
+
+
+div(layout="column", ng-repeat="card in cards", ng-hide="cardInPlan(card, model.plan)")
+  md-card: .md-card-conten(layout-padding)
+    div(layout="row")
+      md-button.md-fab.md-mini(ng-click="applyCard(card, model.plan)", aria-label="place card")
+        ng-md-icon(icon="add")
+      h5 {{ card.entry.venue.name }} 
+      
+    p {{ card.entry.note|limitTo:50}}
+    
+  md-divider

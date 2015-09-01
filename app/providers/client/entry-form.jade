@@ -1,0 +1,39 @@
+div(ng-show="entry.venue.gpid || !entry.venue")
+  form(name="entryForm", ng-if="!(manual || entry.venue)") 
+    md-autocomplete(placeholder="Search for a place to suggest",
+      md-items="i in venues(ac.text)",
+      md-search-text-change="ac.change()"
+      md-selected-item="ac.item",
+      md-selected-item-change="setV(i)",
+      md-search-text="ac.text",
+      md-autofocus="true"
+    )
+      span(md-highlight-text="ac.text", md-highlight-flags="^i") {{ i.description }}
+    
+
+  div(ng-if="entry.venue")
+    entry-item(aria-label="Edit Venue", layout="row", layout-align="start start") 
+      entry-details(flex, layout="column") 
+        venue-name {{ entry.venue.name }}
+      md-button(ng-click="setV(null)", aria-label="Edit Venue")
+        ng-md-icon(icon="highlight_remove")
+    
+    div.entry-note(layout="column")
+      md-input-container
+       label Note about {{ entry.venue.name }}
+       textarea(ng-model="entry.note", ng-required="true")
+      div(layout="row", layout-align="end center")
+        md-button.md-link(ng-click="cancelIt()") Cancel
+          span(ng-if="entry.id") editing
+        md-button.md-primary.md-raised(ng-disabled="entryForm.$invalid", ng-click="saveIt()") Save
+  
+.bottom(ng-hide="entry.venue.aid", layout="column")
+  div(layout="row")
+    md-button.md-link(ng-show="entry.id && entry.venue == null", cancel="cancelIt()", aria-label="Stop Editing")
+    md-button.md-primary.md-raised(ng-hide="manual", ng-click="manual = true", flex) Manually add item 
+  
+  manual-add(ng-show="manual", cancel="cancelIt()", save="saveIt()", entry="entry")
+  h6 Tap the top right corner icon to see client's wishes.
+
+
+img(src="/img/powered-by-google-on-white.png")

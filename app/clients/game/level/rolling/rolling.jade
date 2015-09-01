@@ -1,0 +1,14 @@
+//
+   Created by popara on 5/16/15.
+
+.high 
+  .icon(ng-class="roll[i].id")
+  h4 {{ roll[i].title }}
+  h2 {{ roll[i].desc }}
+  
+
+.rolling
+  choices 
+    button(ng-repeat="r in getNumber(roll.length)", ng-click="setI(r)", ng-class="{'selected': i == r}")
+      span(ng-repeat="x in getNumber(r+1)") &euro;
+    

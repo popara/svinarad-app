@@ -1,0 +1,23 @@
+nav.navigation-bar
+  a.back(href="/")
+  
+  
+section.sowrong
+  h1 Login 
+  button.facebook(ng-click="attempt(model.loginWithFacebook())") Login with Facebook
+
+  h2 or 
+  
+  .login-with-email 
+    form(name="login", ng-submit="attempt(model.loginWithCreds())")
+      section(ng-hide="failed")
+        h5 Login with email
+        p: input(type="email", autocorrect="off", autocapitalize="none", ng-model="model.email", placeholder="Email", ng-required="true", name="email")
+        p: input(type="password", ng-model="model.password", placeholder="Password", ng-required="true", name="password")
+        .loader(ng-show="pending")
+        p.attempt(ng-hide="failed || pending"): button(ng-click="attempt(model.loginWithCreds())", ng-disabled="login.$invalid || pending") LOGIN
+        
+    div(ng-show="failed")
+      h5 No, we don't let such guys in.
+      h3 Mr. Wolf suggests that you check your credentials and try again
+      p: button(ng-click="reset()") OK, Let me try again

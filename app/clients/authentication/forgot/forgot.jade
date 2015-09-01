@@ -1,0 +1,23 @@
+extends ../../../base/global/nav.jade
+
+block main
+  h1 Crap, it happens sometimes.
+
+  h4 But, don't worry! We know how to do it, we will restore you memory of your Jonny password.
+
+  h3 Just focus on red light below and type your email on dotted lines.
+
+
+  form(name="forgot")
+    p
+      input(type="email", ng-model="forgotEmail", ng-hide="pending")
+
+
+    div(ng-show="failed")
+      h4 It seems that you don't have record with Jonny
+      h3 Mr. Wolf recommends that you check your email address or
+        a(ui-sref="home")  turn back.
+
+      button(ng-click="reset()") OK
+
+    p(ng-hide="failed"): button(ng-click="attempt(model.forgot(forgotEmail))") OK, restore my memory!

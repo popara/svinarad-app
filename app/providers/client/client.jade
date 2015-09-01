@@ -1,0 +1,63 @@
+md-toolbar: .md-toolbar-tools(layout="row")
+  md-button.md-icon-button(ng-click="goBack()", aria-label="Back") 
+    ng-md-icon(icon="chevron_left")
+  h2(ng-click="goBack()") Back 
+  
+  span(flex)
+  h1 {{ model.client.name }}
+  span(flex)
+  
+  
+  md-button.md-icon-button(ui-sref="chat-user({id: model.client.$id })", aria-label="Chat")
+    ng-md-icon(icon="chat")
+  
+  
+md-content.md-padding
+  .client-item(layout="row")
+    section.profile-avatar(layout="column", layout-align="center center")
+      img.md-avatar(alt="{{ model.client.name }}", src="/img/jonny_gold@2x.png")
+      .company(layout="row") 
+        ng-md-icon(icon="person")
+        div {{ model.details.totalpeople() }}
+        
+    section(layout="column", flex)
+      headline {{ model.client.name}} 
+        md-button.md-icon-button.facebook(ng-if="model.client.fb_link", target="_blank" ng-href="{{ model.client.fb_link }}") Facebook 
+      subhead {{ model.client.age }} - {{ model.client.sex }}
+      .brand {{ model.client.residence }}
+  
+      div {{ dates.start|humanTime:'Do MMM' }} - {{ dates.end|humanTime:'Do MMM' }}
+    section.md-body-2 
+      div Time Left 
+      div 
+        span(ng-show="model.details.t.timeleft.get('hours')") 
+        | {{ model.t.timeleft.get('hours') }}h  
+        | {{ model.t.timeleft.get('minutes') }}mins {{ model.t.timeleft.get('seconds' )}}secs
+      
+  
+  
+md-divider 
+
+.all-client.answers 
+  div(ng-repeat="x in model.qa")
+    .question {{ x.question }}
+    .answer {{ x.answer }}
+    
+md-divider 
+
+md-content.md-padding 
+  .decks-placement(layout="column")
+    div(layout="row", layout-align="space-around center", layout-fill)
+      md-button.md-raised(ui-sref=".adddeck", ui-sref-active="md-accent") 
+        ng-md-icon(icon="filter_none")
+        | Place a deck 
+      md-button.md-raised(ui-sref=".addcard", ui-sref-active="md-accent")
+        ng-md-icon(icon="local_attraction")
+        | Place a card
+    
+    div(ui-view="")
+    
+  md-divider
+  plan-builder(client='model.client', answers="model.answers", plan="model.plan", questions="options.questions", categories="options.categories")
+  
+ui-gmap-google-map(center="options.map.center", zoom="options.map.zoom")

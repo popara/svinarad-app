@@ -1,0 +1,10 @@
+
+bestoption(ng-click="toggleOpen()", ng-hide="open")
+  span(ng-show="title.length") {{ title }}
+  span(ng-hide="title.length") {{ nullTitle }}
+  
+simploptions(ng-show="open") 
+  simplopt(ng-class="{'simplected': isSelected()}", ng-click="nullClick()") {{ nullTitle }}
+  simplopt(ng-repeat="o in options", ng-click="click(o)", ng-class="{'simplected': isSelected(o)}") {{ getLabel(o) }}
+      
+  

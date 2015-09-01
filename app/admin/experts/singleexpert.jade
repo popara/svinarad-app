@@ -1,0 +1,85 @@
+h2 {{ model.name }}
+
+form.ui.form(name="exp", checkboxes)
+  h4 {{ model.email }} 
+    
+  .ui.dividing.header Basic information
+  .field
+    label Name 
+    .two.fields 
+      .field 
+        input(type="text", name="first_name", placeholder="First Name", ng-model="model.first_name")
+    
+      .field 
+        input(type="text", name="last_name", placeholder="Last Name", ng-model="last_name")
+    
+  .inline.fields 
+    label Sex: 
+    .field 
+      .ui.radio.checkbox 
+        input(type="radio", name="sex", ng-model="model.sex", value="male")
+        label Male 
+    .field 
+      .ui.radio.checkbox
+        input(type="radio", name="sex", ng-model="model.sex", value="female")
+        label Female 
+      
+    
+  .field
+    .two.fields   
+      .field 
+        label Phone Number
+        input(type="tel", name="phone", placeholder="Phone number", ng-model="model.ohone")
+        
+      .field 
+        label Vimeo ID 
+        input(type="number", name="vimeo_id", placeholder="Vimeo ID", ng-model="model.vimeo_id")
+        
+  .field 
+    label About 
+    textarea(ng-model="model.about", rows="2")
+    
+  .field
+    label Hometown 
+    input(type="text", name="hometown", placeholder="hometown", ng-model="model.hometown")
+  
+  .field 
+    label Residence 
+    input(type="text", name="residence", placeholder="Current Residence", ng-model="model.residence")
+    
+  .field 
+    label Job
+    input(type="text", name="job", placeholder="Current Job", ng-model="model.work")
+    
+  .field 
+    label School 
+    input(type="text", name="school", placeholder="School", ng-model="model.school")
+    
+  .field 
+    label Since
+    input(type="text", name="since", placeholder="Jonny Since", ng-model="model.since")
+    
+  .field
+    .ui.dividing.header Stats
+    .three.fields 
+      .field 
+        label Rating 
+        input(type="number", name="rating", placeholder="Rating 0-5", ng-model="mdoel.rating")
+        
+      .field 
+        label Response Rate
+        input(type="number", name="response", placeholder="Response Rate 1 - 100", ng-model="model.response_rate")
+        
+      .field 
+        label Earned     
+        input(type="number", name="earned", placeholder="Money Earned", ng-model="model.earned")
+
+  .field 
+    label Verifications {{ model.verifications }}
+    .field(ng-repeat="(key, val) in options.verif")
+      .ui.checkbox
+        input(type="checkbox", tabindex="0", class="hidden", ng-model="options[key]", ng-change="options.verify()", ng-value="key")
+        label {{ val }} 
+        
+  .ui.hidden.divider 
+  button.big.ui.button.fluid.green(ng-click="model.$save()") Save Changes 

@@ -1,0 +1,9 @@
+h2 Experts
+
+.ui.divided.list
+  .item(ng-repeat="e in model")
+    img.ui.avatar.image(async-src="options", item="e", ui-sref="expert({id: e.$id})")
+    .content
+      a.header(ui-sref="expert({id: e.$id})") {{ e.name }}
+      .description {{ e.about }}
+      

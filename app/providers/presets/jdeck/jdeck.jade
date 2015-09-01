@@ -1,0 +1,15 @@
+.yop(layout="row", layout-align="space-between center")
+  md-input-container 
+    label Deck name 
+    input(type="text", ng-model="deck.name", ng-required="true")
+  
+  md-button(ng-click="deleteIt()", aria-label="remove deck"): ng-md-icon(icon="delete")
+    
+
+cards
+  div(ng-repeat="card in cards", layout="row", layout-align="start center") 
+    ng-md-icon(icon="remove_circle_outline", style="fill: darkgray", ng-click="cards.$remove(card)")
+    h4 {{ card.entry.venue.name }}
+    
+    
+    

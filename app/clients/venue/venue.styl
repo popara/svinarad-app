@@ -1,0 +1,87 @@
+@require "small-venue/small-venue"
+
+padding = 30px
+separator-c = #E8E8E8
+
+separate()
+  border-bottom 1px solid separator-c
+
+.venue
+  flow(column)
+
+  label
+    color grey-c
+  label strong
+    color text-color
+
+  .photo
+    min-height 290px
+    background-color greenyellow
+    image '/img/villa.jpg'
+    background-size cover
+    background-position center
+
+
+  .venue-head
+    flow(row)
+    padding padding
+
+  .venue-name
+    flex 2
+    text-align left
+
+    p
+      font-weight 300
+      color text-color
+
+  .venue-rating
+    text-align right
+
+
+  .note
+    text-align left
+    background #ECECEE
+    padding 20px 30px
+    border-radius 10px
+    color brand-color
+    margin padding
+
+    h5
+      margin-bottom 0
+    p
+      color brand-color
+      font-weight 400
+
+  p
+    margin-top 3px
+  a
+    color brand-color
+    text-decoration none
+    align-self center
+
+
+.venue-address
+  flow(row)
+  separate()
+  padding padding
+  .address-detail
+    text-align left
+
+.venue-contact
+  flow(row)
+  separate()
+  justify-content space-between
+  padding padding
+  label
+    text-align left
+
+  p
+    text-align right
+
+
+
+.venue-working-hours
+.venue-description
+  padding padding
+  text-align left
+

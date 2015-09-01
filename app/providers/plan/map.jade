@@ -1,0 +1,5 @@
+h2 Ibiza Treasure Map for You to explore
+
+.full-height(fill-height, trigger-resize="100")
+  ui-gmap-google-map(center="model.center", zoom="{{ model.zoom }}")
+    ui-gmap-markers(models="model.markers", coords="'coords'")

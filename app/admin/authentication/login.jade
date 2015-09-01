@@ -1,0 +1,14 @@
+.ui.segment.inverted
+  form.ui.form(name="login")
+    h2 Welcome Mr. Wolf 
+  
+  
+    
+    h3 Email 
+    input(type="email", ng-model="model.email")
+
+
+    h3 Password 
+    input(type="password", ng-model="model.password")
+
+    button.ui.button.blue(ng-click="attempt(model.loginWithCreds())", ng-class="{'loading': pending}") Do da thing! Get me in!

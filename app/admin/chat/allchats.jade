@@ -1,0 +1,11 @@
+.main
+  h1 All Chats 
+  h1(ng-hide="model.chats.length") Loading
+  
+  .ui.list
+    .item.segment(ng-repeat="contact in model.chats", ui-sref="chat-user({id: contact.client.$id })", layout="column")
+      h2.ui.header 
+        button.ui.red.button(ng-if="contact.unread.length") {{ contact.unread.length }}
+        .content {{ contact.client.name }}
+      .ui.section.divider
+            

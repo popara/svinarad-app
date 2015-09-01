@@ -1,0 +1,42 @@
+header(ng-if="options.details.dates()")
+  | {{ options.details.dates().start|humanTime:"DD MMM" }} - {{ options.details.dates().end|humanTime:"DD MMM" }}
+
+content
+  category(ng-repeat="(cat_id, cat) in options.categories", ng-if="model.categories[cat_id]")
+    category-things
+      category-header(ui-sref="category({id: cat_id})")
+        category-info 
+          .icon(ng-class="cat_id")
+          h5 {{ cat.name }}
+          
+        category-link(ui-sref="category({id: cat_id})") 
+          items-bubble {{ options.helpers.count(model.categories[cat_id]) }} 
+          svg-icon.arrow(p="chevronright")  
+          
+      category-content
+        category-item(ng-repeat="(eid, entry) in model.categories[cat_id]", ng-if="$index < options.localLimit")
+          svg-icon.icon(p="{{ cat_id }}")  
+          a(ui-sref="venue({id: eid})") {{ entry.venue.name }}
+          
+        category-item.hinted-item(ng-if="options.localLimit < (model.categories[cat_id]|cnt)")
+          svg-icon.icon(p="{{ cat_id }}")
+          a(ui-sref="category({id: cat_id})") {{ options.limited(model.categories[cat_id]).venue.name }}
+          .shadow(ui-sref="category({id: cat_id})")
+          
+small-profile.narrow-container(profile="options.expert", unseen="options.unread.agent")
+
+section.disclamer
+  p This is the thing that you payed for. In near future we will offer options for you to book all this stuff autmatically, but for now, you have to do it your self. We are sure that
+    | &nbsp;
+    a(ui-sref="chat-agent") {{ options.expert.first_name }}
+    |  can help you with that.
+
+section.feedback
+  div(ng-if="options.unread.us == 0 ")
+    button(ui-sref="chat-us") Send us feedback
+      h6 We need it, we love it, we encourage it!
+    
+  div(ng-if="options.unread.us > 0")
+    button.unread-wrapper(ui-sref="chat-us") You have {{ options.unread.us }} unread messages 
+      h6 Sent from Mr. Wolf, our support team. 
+      .unread-count {{ options.unread.us }}

@@ -1,0 +1,50 @@
+{
+  "firebase": "jonnyibiza",
+  "public": "_public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**",
+    "**/bower_components/**"
+  ],
+  "redirects": [{
+      "source": "/login",
+      "destination": "/app/login",
+      "type": 301
+    }, {
+      "source": "/signup",
+      "destination": "/app/signup",
+      "type": 301
+  }],
+  "rewrites": [{
+      "source": "/app",
+      "destination": "/clients.html"
+    }, {
+      "source": "/app/**",
+      "destination": "/clients.html"
+    }, {
+      "source": "/",
+      "destination": "/index.html"
+    }, {
+      "source": "/expert",
+      "destination": "/providers.html"
+    }, {
+      "source": "/expert/**",
+      "destination": "/providers.html"
+    }, {
+      "source": "/gallery",
+      "destination": "/gallery.html"
+    }, {
+      "source": "/canvas",
+      "destination": "/canvas.html"
+    }, {
+      "source": "/canvas/*",
+      "destination": "/canvas.html"
+    }, {
+      "source": "/wolf",
+      "destination": "/admin.html"
+    }, {
+      "source": "/wolf/**",
+      "destination": "/admin.html"
+  }]
+}

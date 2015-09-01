@@ -1,0 +1,11 @@
+div.age-input
+  .list-title Your age
+  input(type="tel", placeholder="Your age", ng-model="ans.age")
+
+div
+  .list-title Gender
+  list-check(items="ops.genders", item-checked="checked('gender', value)", toggle-item="toggle('gender', value)", item-label="labels(item)")
+  
+div.dropdown
+  .list-title Country
+  select(ng-model="ans.country", ng-options="c for c in countries", country-select)

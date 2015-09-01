@@ -1,0 +1,6 @@
+.profile-pic(ng-style="{'backgroundImage': 'url('+profile.pic.url+')' }")
+  h1 {{ profile.first_name }} {{ profile.last_name[0] }}.
+
+
+button.chat-with-agent.unread-wrapper(ui-sref="chat-agent") Chat with {{ profile.first_name }}
+  .unread-count(ng-if="unseen > 0") {{ unseen }}

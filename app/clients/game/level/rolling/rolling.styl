@@ -1,0 +1,81 @@
+game-rolling
+  flow(column)
+  padding 20px
+
+  h4
+    font-size 20px
+    letter-spacing 2px
+    font-weight 600
+    margin-bottom 30px
+    text-transform uppercase
+
+  h2
+    font-size 20px
+    letter-spacing 1px
+    font-weight 500
+    margin-bottom 20px
+    color brand-color
+
+  .high
+    flow(column)
+    height 280px
+    align-items center
+
+  roller(id)
+    &.{id}
+      background-image url('/img/rollers/'id'.jpg')
+
+
+  .icon
+    circle(120px, transparent)
+    margin-bottom 20px
+    background-size cover
+    background-position center center
+    transition all .5s ease-in
+
+    for rol in backpacker clooney cosmopolitan jetsetter sultan
+      roller(rol)
+
+    &.rick
+      background-image url('/img/rollers/rick.gif')
+
+
+  .rolling
+    flow(column)
+
+    choices
+      flow(row)
+      justify-content space-between
+
+      button
+        color brand-color
+        margin 0 2px
+        padding 20px 0
+        border-radius 10px
+        background-color transparent
+        font-weight 400
+
+        border 1px solid brand-color
+
+        &:nth-child(1)
+          width 30px
+        &:nth-child(2)
+          width 40px
+        &:nth-child(3)
+          width 60px
+        &:nth-child(4)
+          width 70px
+        &:nth-child(5)
+          width 80px
+
+        &.selected
+          color gray-9
+          background-color lighter-brand
+          font-weight 900
+
+
+
+
+    input
+      padding 40px 0
+      flex 1

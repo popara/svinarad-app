@@ -1,0 +1,64 @@
+@require nib
+@require jeet
+@require "global/global"
+@require "home/home"
+@require "sidenav/sidenav"
+@require "chat/chat"
+@require "plan/plan"
+@require "profile/profile"
+@require "presets/presets"
+
+.md-fab img.md-avatar
+  width 180%
+  margin-top -10px
+  margin-left -10px
+.md-toolbar-tools
+  color white
+  fill white
+
+.profile-avatar
+  width 75px
+  img
+    width 100%
+
+.client-item
+  padding 20px
+
+  &.fullfilled
+    background-color #F5F5F7
+
+  &:hover
+    background-color gray-9
+
+  .md-avatar
+    margin-bottom 20px
+
+  .profile-avatar
+    margin-right 15px
+
+  .company
+
+    ng-md-icon
+      fill gray-7
+      margin-right 3px
+
+    > div
+      margin-top 4px
+
+
+  .md-body-2
+    text-align right
+    font-weight 600
+
+    .ammount
+      font-size 32px
+      color gray-4
+      font-weight 400
+      margin-top 30px
+
+      &.earned
+        color brand-color
+
+
+  headline
+    margin-top 10px

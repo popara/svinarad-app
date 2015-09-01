@@ -1,0 +1,14 @@
+.ui.card.fluid
+  .image 
+    img(ng-src="{{ user.pic.thumb }}")
+
+  .content 
+    a.header {{ user.name }}
+    
+    .meta {{ user.email }} - {{ user.phone }}
+    .description(ng-repeat="(k, v) in user")
+      div(ng-if="k != 'pic'")
+        h4 {{ k }}
+        p {{ v }}
+    
+  

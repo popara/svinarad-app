@@ -1,0 +1,33 @@
+.plan-section(ng-hide="tips")
+  .top(layout="row", ng-click="toggleFold()")
+    .jicon(ng-class="category.$id")
+    h5 {{ category.name }}
+    span(flex)
+    div(layout="column", layout-align="center center")
+      md-button.md-icon-button(ng-show="folded", aria-label="Toggle")
+        ng-md-icon(icon="arrow_drop_down")
+      md-button.md-icon-button(ng-hide="folded", ng-click="showTips()", aria-label="Show tips")
+        ng-md-icon(icon="texture")
+  folding(ng-hide="folded", layout="column")
+    .mid 
+      div(ng-repeat="(eid, e) in model", layout="column") 
+        entry-item(ng-if="eid != entry.id", ng-click="setEntry(e, eid)", layout="row", layout-align="start start")
+          entry-details(flex, flex-order-gt-sm="2", layout="column")
+            venue-name  {{ e.venue.name }} 
+            entry-note {{ e.note }}
+          md-button(ng-click="removeEntry(e)", aria-label="Remove Entry")
+            ng-md-icon(icon="remove_circle_outline")
+            
+        entry-form(entry="entry", category="category", set-venue="setVenue(venue)", ng-if="eid == entry.id", save="saveEntry()", cancel="cancelEditing()")
+      
+      entry-form(entry="entry", category="category", set-venue="setVenue(venue)", ng-if="entry.id == null", save="saveEntry()", cancel="cancelEditing()")
+.plan-tips(ng-show="tips", ng-click="hideTips()", layout="column", layout-align="start center ")
+  .top(layout="row", ng-click="toggleFold()")
+    .jicon(ng-class="category.$id")
+    h5 {{ category.name }}
+  .answers 
+    div(ng-repeat="x in qa")
+      .question {{ x.question }}
+      .answer {{ x.answer }}
+  
+  h6 TAP TO HIDE 

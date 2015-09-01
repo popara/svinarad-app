@@ -1,0 +1,9 @@
+h6 Multiple selection
+bingo-items
+  div(ng-repeat="opt in answers")
+    button(ng-click="toggle(opt)", ng-class="{'selected': selected(opt), '{{ opt | flattenize}}': true}",)
+    label.brand {{ opt }}
+
+section
+  .label Optional
+  textarea(placeholder="Tell us more", msd-elastic="\n", ng-model="extra")

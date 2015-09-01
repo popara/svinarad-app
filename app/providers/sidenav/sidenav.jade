@@ -1,0 +1,33 @@
+div(ng-controller="SidebarCtrl")
+  md-toolbar.md-primary.md-tall
+    span(flex)
+    div.md-toolbar-tools.md-toolbar-tools-bottom(layout="row")
+      md-button.md-fab.md-mini(aria-label="Your profile", ui-sref="profile")
+        img.md-avatar(ng-src="{{ user.pic.thumb }}")
+      
+      div.profile(layout="column")
+        h4 {{ user.first_name }} {{ user.last_name }}
+        svg-stars.small(stars="user.rating")
+    
+  md-content(layout-padding, layout="column")  
+    md-button(ng-click="goTo('home')", flex, layout="row", layout-align="start center") 
+      ng-md-icon(icon="dashboard")
+      span(flex) Dashboard
+    md-button(ng-click="goTo('profile')", flex, layout="row", layout-align="start center") 
+      ng-md-icon(icon="person")
+      span Profile 
+    md-button(ng-click="goTo('presets')", flex, layout="row", layout-align="start center") 
+      ng-md-icon(icon="vibration")
+      span Presets 
+    md-button(ng-click="goTo('chat-us')", flex, layout="row", layout-align="start center") 
+      ng-md-icon(icon="chat")
+      span Mr. Wolf 
+    
+    
+    
+    span(flex)
+    md-divider
+    
+    md-button(ng-click="goTo('logout')", flex)
+      ng-md-icon(icon="wb_sunny")
+      span Logout

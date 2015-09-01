@@ -1,0 +1,29 @@
+.expert-image#top(ng-style="{backgroundImage: 'url('+ (model.expert.vimeo_id ? '' : model.expert.pic.url) +')'}")
+  vimeo-player(ng-if="model.expert.vimeo_id", player-id="video_pick", video="model.expert.vimeo_id")
+
+meet-expert.narrow-container
+  h1 Meet {{ model.expert.first_name }} {{ model.expert.last_name[0] }}!!
+  p {{ options.user.first_name }}, we think 
+    | {{ model.expert.sex | pronun:'direct' }}'s 
+    | a {{ model.qualifier() }} match for you. 
+    | {{ model.expert.sex | pronun:'direct'| capitalize:'first' }} 
+    | will have your plan to you within
+    br/
+    strong &nbsp;24 hours. 
+    
+  button.buy(ng-click="attempt(model.pick(model.expert))") HIRE {{ model.expert.first_name }} NOW!
+  .money-back-badge
+  second-buttons 
+    button.sec.back(ng-show="model.previous", href="#top", du-smooth-scroll, duration="500",  ng-click="model.back()") Back to {{ model.previous.first_name }}
+    button.sec(ng-show="model.experts.length > 1", href="#top", du-smooth-scroll, duration="500", ng-click="model.showNext()") nope, match me with another Jonny
+    
+  learnmore(href="#ex", du-smooth-scroll, duration="300") Learn More about {{ model.expert.first_name }}
+    
+expert-profile.narrow-container#ex(expert="model.expert")
+
+section.cta.narrow-container
+  button.buy(ng-click="attempt(model.pick(model.expert))") HIRE {{ model.expert.first_name }} NOW!
+
+  second-buttons 
+    button.sec.back(ng-show="model.previous", href="#top", du-smooth-scroll, duration="500",  ng-click="model.back()") Back to {{ model.previous.first_name }}
+    button.sec(ng-show="model.experts.length > 1", href="#top", du-smooth-scroll, duration="500",  ng-click="model.showNext()") nope, match me with another Jonny

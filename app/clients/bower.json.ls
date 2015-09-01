@@ -1,0 +1,10 @@
+bower \clients do
+  "angular-elastic": "~2.4.2"
+  "angular-capitalize-filter": "~2.1.0"
+  "angular-scroll": "~0.7.0"
+  "angular-local-storage": "~0.2.1"
+  "angular-scroll-glue": "2.0.5"
+  "angular-google-maps": "~2.1.2"
+  "angular-payments": "*"
+  "angular-vimeo-embed": "~0.1.2"
+  "angular-country-picker": "~1.0.1"

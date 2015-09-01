@@ -1,0 +1,150 @@
+plan-builder
+  h4
+    font-size 18px
+    text-transform uppercase
+    color brand-color
+
+  p
+    color gray-3
+    max-width 230px
+    text-align center
+    line-height 18px
+
+  .top
+    h5
+      font-size 16px
+      line-height 14px
+
+plan-category
+  margin 12px 0px
+  padding-bottom 10px
+  position relative
+
+  .plan-section
+    background-color #F5F5F7
+    padding 0 20px
+
+
+  .jicon
+    width 40px
+    height 40px
+    margin-right 10px
+    margin-top 10px
+    background-size 40px!important
+    &.accomodation
+      image '/img/plan_stay.png'
+    &.tips
+      image '/img/plan_tips.png'
+
+    &.food
+      image '/img/plan_restaurants.png'
+
+    &.parties
+      image '/img/plan_bars.png'
+
+    &.beaches
+      image '/img/plan_beaches.png'
+
+flip-dur = 0.3s
+.plan-tips
+  background gray-2
+  color white
+  padding 20px
+  transition all linear flip-dur
+
+  &.ng-hide-add
+    absolute top left right
+    transform rotateY(0deg)
+    box-shadow 3px 3px 5px gray-5
+  &.ng-hide-add-active
+    transform rotateY(90deg) scale(.2) translate(550px, -330px)
+
+  //
+  // &.ng-hide-remove
+  //   transition-delay flip-dur
+  //   transform rotateY(90deg)
+  //   z-index 2
+  // &.ng-hide-remove-active
+  //   absolute top left right
+  //   transform rotateY(0deg)
+
+// .plan-section
+//   transition all linear flip-dur
+//   transition-delay flip-dur/2
+//   &.ng-hide
+//     transform rotateY(90deg)
+
+folding
+  padding-bottom 30px
+
+entry-item
+  padding 10px
+  background white
+  margin-bottom 10px
+
+  > .md-button
+    min-width 30px 
+
+  ng-md-icon
+    fill gray-4
+
+entry-details
+  margin-top 4px
+
+venue-name
+  font-size 18px
+  font-weight 900
+
+entry-form
+  form
+    margin-top 30px
+
+  md-autocomplete
+    box-shadow none
+    background transparent
+    border-bottom 1px solid gray-4
+    color gray-4
+    margin-bottom 100px
+
+  .entry-note
+    background-color white
+    padding 20px
+
+.bottom
+  h6
+    text-align center
+    color gray-5
+    font-size 14px
+    margin-bottom 10px
+
+entry-form
+.bottom
+  .md-link
+  .md-primary
+    font-size 18px
+    padding 10px 25px
+
+
+.plan-making .md-success.md-raised
+  font-size 18px
+  background-color success
+  color white
+  padding 10px 25px
+
+.save-actions
+  margin 30px 60px
+
+.answers
+  .question
+    margin-top 10px
+    margin-left 3px
+    margin-bottom 5px
+
+  .answer
+    font-size 20px
+    font-weight 800
+    margin-bottom 30px
+
+
+.all-client.answers
+  padding 20px 40px

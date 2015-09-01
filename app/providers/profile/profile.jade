@@ -1,0 +1,81 @@
+md-toolbar: .md-toolbar-tools(layout="row")
+  md-button.md-icon-button(ui-sref="home", aria-label="Back") 
+    ng-md-icon(icon="chevron_left")
+  h2(ui-sref="home") Back 
+
+.profile-form(layout="column" flow-init, flow-files-submitted="options.flow($flow)")
+  profile-picture(layout="column", layout-align="start center")
+    img(ng-if="model.pic.url && !files.length", ng-src="{{ model.pic.url }}", alt="Your profile picture")
+    img(ng-if="files.length", ngf-src="files[0]" alt="Your profile picture")
+    md-input-container
+      h3(ng-if="pending") 
+        | Uploading your picture. Give it a few moments.
+        md-progress-linear(md-mode="indeterminate", ng-show="pending")
+
+      .upload-btn(ngf-select, ng-model="files", ngf-change="attempt(options.flow($files))") Change picture
+
+  form(name="profile", layout="column")
+  
+    md-input-container 
+      label First Name 
+      input(type="text", ng-model="model.first_name")
+    
+    md-input-container 
+      label Last Name 
+      input(type="text", ng-model="model.last_name")
+    
+    md-input-container 
+      label Phone 
+      input(type="tel", ng-model="model.phone")
+    
+    h4 Additional information
+    
+    md-input-container.job.preicon
+      label Job Title 
+      input(type="text", ng-model="model.work")
+    
+    md-input-container.preicon.hometown
+      label Hometown
+      input(type="text", ng-model="model.hometown")
+    
+    md-input-container.preicon.residence
+      label Current Residence 
+      input(type="text", ng-model="model.residence")
+
+    md-input-container.preicon.school
+      label School
+      input(type="text", ng-model="model.shool")
+
+    md-input-container
+      label About 
+      textarea(msd-elastic, ng-model="model.about")
+      
+    chips(model="model.interests", placeholder="Interests", readonly="false")
+    chips(model="model.skills", placeholder="Skills", readonly="false")
+    
+      
+    form(name="lng")
+      .lng-form(layout="row")
+        md-input-container(flex="40")
+          label Language
+          input(type="text", ng-model="language.name", ng-required="true")
+        md-select(ng-model="language.skill", flex="33", aria-label="Select your skill", ng-required="true")
+          md-option(ng-value="skill[0]", ng-repeat="skill in options.languageSkills.skills") {{ skill[1] }}
+        md-button.md-primary.md-raised(ng-disabled="lng.$invalid", flex, ng-click="options.addLanguage(language)") Add 
+    
+      div(layout="column")
+        .lng-item(ng-repeat="(lang, skill) in model.languages", flex, layout="row", layout-align="space-around")
+          span.lng-name {{ options.languageSkills.getName(lang) }} 
+          | &nbsp; - &nbsp;
+          span.brand {{ options.languageSkills.getSkill(skill) }}
+          span(flex)
+          ng-md-icon(ng-click="options.removeLanguage(lang)", icon="cancel")
+          
+    md-input-container 
+      label Vimeo ID
+      input(type="text", ng-model="model.vimeo_id")
+    
+      
+  
+  md-button.md-success.md-raised.save-profile(ng-click="attempt(options.save(model))") SAVE CHANGES
+    

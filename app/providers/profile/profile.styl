@@ -1,0 +1,91 @@
+profile-picture
+  margin 80px
+  margin-top 10px
+  img
+    border-radius 100px
+    max-width 100px
+
+  .upload-btn
+    color brand-color
+    padding 20px 
+
+.profile-form
+  margin 50px
+
+
+  +mobile()
+    margin 15px
+
+chips
+  margin-top 20px
+  chip
+    background-color brand-color
+    color white
+    fill darker-brand
+
+    margin-right 10px
+    margin-bottom 10px
+    padding 5px 10px
+    > div
+      margin-top 10px
+      margin-right 5px
+      font-size 16px
+
+.preicon
+  position relative
+  input
+    margin-left 30px
+  &:before
+    content ''
+    width 24px
+    height 24px
+    background-size 18px!important
+    absolute top 20px left 0
+
+  &.job:before
+    bgimage '/img/profile_work.png'
+
+  &.hometown:before
+    bgimage '/img/profile_hometown.png'
+
+  &.residence:before
+    bgimage '/img/profile_current_location.png'
+
+  &.school:before
+    bgimage '/img/profile_education.png'
+
+  &:not(.md-input-focused):not(.md-input-has-value)
+    label
+      margin-left 30px
+
+.lng-form
+  margin-top 70px
+  md-input-container
+    margin-right 20px
+  button
+    margin-left 20px
+    padding 5px
+    max-height 48px
+
+.lng-item
+  background gray-9
+  padding 15px 10px
+  margin-bottom 10px
+  font-size 20px
+  fill gray-5
+
+  .lng-name
+    font-weight 700
+    color gray-2
+
+
+button.save-profile.md-raised.md-success
+  margin 0 60px
+  margin-top 70px
+  background-color success
+  padding 15px 0
+  font-size 18px
+  color white
+
+  &:hover
+    color success

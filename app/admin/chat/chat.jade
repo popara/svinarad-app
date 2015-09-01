@@ -1,0 +1,15 @@
+.main
+  .chat-user
+    chatwindow(scroll-glue="")
+      chatitem(ng-repeat="m in model.room", ng-class="m.who == model.auth.uid ? 'me': 'other'") 
+      
+        .face
+          img(ng-if="m.who != model.auth.uid", ng-src="{{ model.client.thumb }}")
+          
+        chatbubble 
+          p {{ m.what }}
+          timestamp {{ m.at | humanize }}
+        
+    form(name="shout")
+      textarea(ng-disabled="pending", ng-model="what", msd-elastic="\n", placeholder="type your message here", style="font-size: 18px;")
+      button.ui.button.blue(ng-click="reset('what', model.shout(model.room, what))", ng-disabled="pending") Send

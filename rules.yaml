@@ -1,0 +1,149 @@
+functions:
+  - isLoggedIn(): auth.uid !== null
+  - isAdmin(): root.admins[auth.uid] === auth.uid
+  - createOnly(): next.exists() && !prev.exists()
+  - noDelete(): next.exists()
+  - isUsersAnon(anon): root.users[auth.uid]['anon'] === anon
+  - isUsers(user): auth.uid === user
+  - isUsersExpert(user): root.users[user]['expert'] === auth.uid
+  - isExpert(): root.experts[auth.uid] === true
+  - isBackOffice(): isAdmin() || isExpert()
+  - isPayedUser(): root.users[auth.uid].payed !== null
+  - isJobOwner(job): root.jobs[job]['owner'] === auth.uid
+  - hasJob(): root.jobs[auth.uid] !== null
+  - incrementOnly(): next == prev + 1
+
+schema:
+  type: object
+  properties:
+    admins: {}
+    answers:
+      type: object
+      $anon: {}
+    backup_experts: {}
+    categories: {}
+    chat:
+      type: object
+      $user:
+        type: object
+        properties:
+          us: {}
+          agent: {}
+    experts: {}
+    experiments:
+      type: object
+      $exp_type:
+        type: object
+        additionalProperties: true
+        $exp_id:
+          type: object
+          properties:
+            attempts:
+              type: number
+            hits:
+              type: number
+            value:
+              type: string
+
+    jobs:
+      type: object
+      $job:
+        type: object
+        additionalProperties: true
+        properties:
+          applicants: {}
+    levels: {}
+    plan:
+      type: object
+      $user:
+        type: object
+    presets:
+      type: object
+      $user: {}
+    users:
+      type: object
+      $user: {}
+
+access:
+  - location: /
+    read: false
+    write: false
+
+  - location: admins/
+    read: isAdmin()
+    write: isAdmin()
+
+  - location: answers/
+    read: true
+    write: createOnly()
+
+  - location: answers/$anon/
+    read: true
+    write: isUsers($anon) || isUsersAnon($anon)
+
+  - location: backup_experts/
+    read: isAdmin()
+    write: isAdmin()
+
+  - location: categories/
+    read: true
+    write: isAdmin()
+
+  - location: chat
+    read: isAdmin()
+    write: isAdmin()
+
+  - location: chat/$user/us
+    read: isUsers($user)
+    write: isUsers($user)
+
+  - location: chat/$user/agent
+    read: isUsers($user) || isUsersExpert($user)
+    write: isUsers($user) || isUsersExpert($user)
+
+  - location: experts/
+    read: true
+    write: isAdmin()
+
+  - location: jobs/
+    read: isAdmin() || isLoggedIn()
+    write: isAdmin() || isLoggedIn()
+
+  - location: jobs/$job/
+    read: isAdmin() || isJobOwner($job) || isExpert()
+    write: isAdmin() || isJobOwner($job)
+
+  - location: jobs/$job/applicants/
+    write: isExpert() && createOnly()
+
+  - location: levels/
+    read: true
+    write: isAdmin()
+
+  - location: plan/
+    read: isAdmin()
+
+  - location: plan/$user/
+    read: isUsers($user) || isUsersExpert($user) || isAdmin()
+    write: createOnly() || ((isUsersExpert($user) || isAdmin()))
+
+  - location: users/
+    read: isLoggedIn() || isExpert() || isAdmin()
+    write: createOnly() || isAdmin()
+
+  - location: users/$user/
+    read: isUsers($user)
+    write:  createOnly() || isUsers($user) || isUsersExpert($user)
+
+  - location: presets/$user/
+    read: isUsers($user) || isAdmin()
+    write: isUsers($user) || isAdmin()
+
+  - location: experiments/
+    read: true
+
+  - location: experiments/$exp_type/$exp_id/attempts
+    write: noDelete() && incrementOnly()
+
+  - location: experiments/$exp_type/$exp_id/hits
+    write: noDelete() && incrementOnly()

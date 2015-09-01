@@ -1,0 +1,30 @@
+.narrow-container
+  .small-logo
+
+  h1 Create your account
+
+  button.register-with.facebook(ng-click="attempt(model.signUpWithFacebook())", ng-hide="pending")
+  .loader(ng-show="pending")
+
+  h2 or
+
+  form(name="signup", ng-init="model.email = options.email")
+    form-row: input(type="text", name="name", ng-model="model.name", placeholder="Name", ng-required="true",  ng-minlength="4")
+    form-row: input(type="email", autocorrect="off", autocapitalize="none", name="email", ng-model="model.email", placeholder="Email", ng-required="true",  ng-minlength="4")
+    form-row: input(type="password", autocorrect="off", autocapitalize="none", name="password", ng-model="model.password", placeholder="Password", ng-required="true", ng-minlength="3")
+
+  h6 By clicking "OK, Next" you agree
+    br/
+    | with the
+    | &nbsp;
+    a(ui-sref="terms") Terms of Use
+    
+  h6.error(ng-switch="lastError.code", ng-hide="pending", ng-if="lastError") 
+    div(ng-switch-when="EMAIL_TAKEN") Oops, it seems that {{ model.email }} is already taken. 
+    div(ng-switch-when="INVALID_ARGUMENTS") Either your password is invalid or you are trying something fishy. 
+    div(ng-switch-when="INVALID_EMAIL") Provided email is not valid. 
+    div(ng-switch-when="NETWORK_ERROR") It seems your internet connection has problems
+    div(ng-switch-default) {{ lastError }}
+
+  .loader(ng-show="pending")
+  button.attempt(type="submit", ng-hide="pending", ng-click="attempt(model.createUser())", ng-disabled="signup.$invalid") Ok, next

@@ -1,0 +1,20 @@
+div(layout="column", layout-margin)
+  section(ng-if="model.cards.length")
+    h5 Decks 
+    md-button.md-raised.md-primary(ng-click="options.newDeck(model.decks.newDeck())") + New Deck
+    .jdecks-cont
+      mini-deck(ng-repeat="deck in model.decks| prelude_reverse ",
+        deck="deck", delete="model.decks.$remove(deck)")
+  
+        
+  md-divider
+  section(layout-margin) 
+    h5 Cards 
+    md-button.md-raised.md-primary(ng-click="model.cards.newCard()", aria-label="Make a new card") + New Card 
+    
+    .jcard-cont(layout="row", layout-wrap)
+      jcard(ng-repeat="card in model.cards | prelude_reverse"
+        card="card" flex="50" sm-flex="100" change="model.cards.$save(card)" delete="model.cards.$remove(card)")
+    
+    
+ui-gmap-google-map(center="options.map.center", zoom="options.map.zoom")

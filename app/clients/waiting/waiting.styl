@@ -1,0 +1,44 @@
+.waiting
+  color white
+  min-height 100vh
+  flow(column)
+  justify-content space-between
+  background url('/img/background_sunset.jpg') no-repeat center center
+  background-size cover
+  align-items stretch
+
+
+  .keep-calm
+    bgimage '/img/keepcalm.png' contain
+    height 218px
+
+  .small-logo
+    margin-top 20px
+
+  .footer
+    @extends .narrow-container
+
+    padding 0 25px
+    flow(column)
+
+    .expert
+      flow(row)
+      justify-content space-between
+      button:nth-child(2)
+        flex 1
+
+
+      button.icon
+        margin-right 20px
+        overflow hidden
+        circle(60px, transparent)
+        bgimage '/img/keepcalm.png' cover
+
+
+    .soothing-msg
+      font-size 20px
+      margin-bottom 20px
+
+
+      .bigger
+        font-size 32px
