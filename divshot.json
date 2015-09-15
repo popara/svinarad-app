@@ -3,17 +3,13 @@
   "root": "./_public/",
   "error_page": "error.html",
   "routes": {
-    "/app": "clients.html",
-    "/app/**": "clients.html",
+    "radnik": "radnik.html",
+    "radnik/**": "radnik.html",
     "": "index.html",
-    "/canvas": "canvas.html",
-    "/canvas/**": "canvas.html",
-    "expert": "providers.html",
-    "gallery": "gallery.html",
-    "/gallery": "gallery.html",
-    "expert/**": "providers.html",
-    "wolf": "admin.html",
-    "wolf/**": "admin.html"
+    "poslodavac": "poslodavac.html",
+    "poslodavac/**": "poslodavac.html",
+    "alija": "admin.html",
+    "alija/**": "admin.html"
   },
   "redirects": {
     "/login": {

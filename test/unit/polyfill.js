@@ -37,7 +37,3 @@
   }
 
 })();
-
-window.__env = {
-  FireBaseNode: "burning-torch-1428"
-};

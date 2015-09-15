@@ -12,6 +12,6 @@ deps =  do
   "karma-chai-as-promised": "^0.1.2"
   "sinon-chai": "^2.7.0"
   'karma-should': '^0.0.1'
-  'angular-mocks': '1.3.15'
+  'angular-mocks': '1.4.5'
 
-export deps 
+export deps

@@ -1,0 +1,82 @@
+jobs:
+  $job_id:
+    status: JobStatus
+    employer: $user_id
+    worker: $user_id
+    percentage: Integer
+    title: String
+    description: String
+    credits: Integer
+    success_condition: String
+    final_instructions: String
+    total_working_hours: String
+    working_period: String
+    timers:
+      published: datetime
+      work_done: datetime
+      closed: datetime 
+    location:
+      text: String
+      geo:
+        lat: Float
+        lng: Float
+    applicants:
+      $user_id:
+        name: String
+        avatar:
+          plain: boolean
+          url: URL
+        rating: Integer
+        when: datetime
+
+    cancelation_note: String
+    worker_cancelations:
+      $worker_id:
+        when: datetime
+        why: String
+    reviews:
+      $user_id:
+        when: datetime
+        note: String
+        rating: integer
+        supported: integer
+
+job_history:
+  $job_id:
+    $change_id: AuditLog<job>
+
+
+users:
+  $user_id:
+    name: String
+    first_name: String
+    last_name: String
+    rating: integer
+    avatar:
+      plain: boolean
+      url: URL
+    description: String
+    location: String
+    contacts:
+      email: Email
+      phone: Phoneno
+      whatsapp: boolean
+      viber: boolean
+      facebook: fb_id
+      twitter: twitter_id
+    worker:
+      affinities: String
+      skills: *
+        skill: String
+        points: integer
+      fullbodyshot:
+        url: URL
+
+    employer:
+      brandname: String
+
+    job_reviews:
+      users:
+        $job_id: rating
+      of_user:
+        $job_id: rating

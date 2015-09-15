@@ -7,6 +7,7 @@ angular.module "app.base" <[
   ui.router
   ui.router.stateHelper
   ng-fastclick
+  visor
 ]>
 
 .run <[$rootScope]> ++ ($rootScope) !->
@@ -33,9 +34,6 @@ angular.module "app.base" <[
   $root.now-state = new-State.name
 
 .config <[$locationProvider]> ++ (lp) !-> lp.html5-mode true
-
-.config <[RestangularProvider HerokuBackendURLProvider]> ++ (RP, HP) !->
-  RP.set-base-url HP.url!
 
 .filter "pronun" -> ((object, type) ->
   pronuns =
