@@ -9,6 +9,7 @@ angular.module "app.base"
 )
 .value "FIREBASE_URL" "https://#{CONFIG.FireBaseNode}.firebaseio.com"
 .factory "Firefire" <[FIREBASE_URL]> ++ (BASE_URL) -> ((body) -> new Firebase [BASE_URL, body].join '/')
+
 .factory "FF" <[Firefire]> ++ id
 .factory "fireArray" <[$firebaseArray FF]> ++ ($firebaseArray, ff) ->
   (body, extension = {}) -> let fa = $firebaseArray.$extend extension

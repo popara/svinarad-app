@@ -7,15 +7,6 @@
     "**/node_modules/**",
     "**/bower_components/**"
   ],
-  "redirects": [{
-      "source": "/login",
-      "destination": "/app/login",
-      "type": 301
-    }, {
-      "source": "/signup",
-      "destination": "/app/signup",
-      "type": 301
-  }],
   "rewrites": [{
       "source": "/app",
       "destination": "/clients.html"

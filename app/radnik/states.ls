@@ -6,3 +6,18 @@ angular.module "svinarad.radnik"
     name: 'intro'
     url: '/'
     template-url: 'app/radnik/intro/intro.html'
+    controller: 'Model'
+    resolve:
+      model: 'OpenJobs'
+
+  s do
+    name: 'login'
+    url: '/login'
+    template-url: 'app/radnik/auth/login.html'
+    controller: 'ModelOptionsNext'
+    resolve:
+      model: 'Authentication'
+      options: -> {}
+      period: -> 100ms
+    data:
+      next: 'intro'
