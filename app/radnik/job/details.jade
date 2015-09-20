@@ -1,0 +1,32 @@
+.top
+.rest 
+  .left 
+    h1 {{ model.title }}
+    .moredetails 
+      .where 
+        .credits 
+          span Naknada: 
+          | {{ model.credits }} rsd
+        
+        p 
+          span Gde: 
+          | {{ model.location.text }}
+        p 
+          span Satnica: 
+          | {{ model.total_working_hours }}
+        p 
+          span U periodu: 
+          | {{ model.workingPeriod }}
+          
+        
+        
+      .description 
+        p {{ model.description }}
+        
+        button.primary Prijavljujem se za ovaj posao!
+
+  .right.profil 
+    .hint Poslodavac
+    img(ng-src="{{ model.employer.avatar.url }}")
+    h2 {{ model.employer.name }}
+    .rating {{ model.employer.rating }}

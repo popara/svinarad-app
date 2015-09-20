@@ -1,8 +1,20 @@
 jobs:
   $job_id:
     status: JobStatus
-    employer: $user_id
-    worker: $user_id
+    employer:
+      $id: id
+      name: String
+      avatar:
+        plain: boolean
+        url: URL
+      rating: Integer
+    worker:
+      $id: id
+      name: String
+      avatar:
+        plain: boolean
+        url: URL
+      rating: Integer
     percentage: Integer
     title: String
     description: String
@@ -14,7 +26,7 @@ jobs:
     timers:
       published: datetime
       work_done: datetime
-      closed: datetime 
+      closed: datetime
     location:
       text: String
       geo:

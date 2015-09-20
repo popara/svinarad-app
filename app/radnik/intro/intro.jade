@@ -1,3 +1,21 @@
-h1 Intro
-a(ui-sref="login") Login
-h1(ng-repeat="job in model") {{ job.title }}
+main
+  h1 Otvoreni Poslovi 
+    span.note ({{ model.oj.length }})
+
+  jobscont
+    .job(ng-repeat="job in model.oj")
+      .title(ui-sref="details({id:job.$id})") {{ job.title }}
+      .micro.profil 
+        img(ng-src="{{ job.employer.avatar.url }}")
+        .name 
+          a(href="#") {{ job.employer.name }}
+          
+          .rating  &#9733;&#9733;&#9733;&#9733;&#9734;
+        
+      .content 
+        .left 
+          .description {{ job.description }}
+          .applicants ima {{ job.applicants | cnt }} prijavljenih
+        .right 
+          button(ui-sref="details({id:job.$id})") Prijavi se na posao
+      

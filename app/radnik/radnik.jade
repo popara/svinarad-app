@@ -8,11 +8,13 @@ html(ng-app="svinarad.radnik", lang="sr")
     meta(name='description', content='Sada svako ko hoce, moze da radi!')
     meta(name='author', content='Zeljko Nesic')
     title Svi Na Rad
-    //- link(rel='stylesheet', href='/css/vendor.css')
-    link(rel='stylesheet', href='/css/index.css')
+    link(href='https://fonts.googleapis.com/css?family=Lobster:100,300,400,700,900', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Oswald:300,400,700', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/radnik/css/index.css')
     include ../base/global/favicon
   body
-    ui-view(ng-class="{{ nowState }}")
+    menu-snr
+    ui-view(ng-class="nowState")
       
     script(src='../js/cfg.js')
     script(src='/radnik/js/vendor.js')

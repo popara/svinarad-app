@@ -1,2 +1,3 @@
 angular.module 'svinarad.radnik'
-.factory 'Intro' <[OpenJobs]> ++ (oj) -> {oj}
+.factory 'Intro' <[OpenJobs FF]> ++ (oj, ff) ->
+  {oj}

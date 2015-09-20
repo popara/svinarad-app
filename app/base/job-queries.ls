@@ -6,4 +6,6 @@ angular.module 'app.base'
 .factory 'JobsByWorker' <[$fa FF]> ++ (fa, ff) ->
   (uid) -> fa (ff 'jobs' .order-by-child 'worker' .equal-to uid)
 .factory 'OpenJobs' <[JobByStatus JobStatus]> ++ (jbs, js) ->
-  jbs js.open .$loaded!
+  jbs js.open
+.factory 'JobById' <[$fo FF]> ++ (fo, ff) ->
+  (id) -> fo <| ff "jobs/#{id}"

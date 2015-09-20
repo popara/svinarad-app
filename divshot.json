@@ -1,14 +1,14 @@
 {
-  "name": "jonnyinc",
+  "name": "svinarad",
   "root": "./_public/",
   "error_page": "error.html",
   "routes": {
-    "radnik": "radnik.html",
-    "radnik/**": "radnik.html",
+    "/radnik": "radnik.html",
+    "/radnik/**": "radnik.html",
     "": "index.html",
-    "poslodavac": "poslodavac.html",
-    "poslodavac/**": "poslodavac.html",
-    "alija": "admin.html",
-    "alija/**": "admin.html"
+    "/poslodavac": "poslodavac.html",
+    "/poslodavac/**": "poslodavac.html",
+    "/alija": "admin.html",
+    "/alija/**": "admin.html"
   }
 }
