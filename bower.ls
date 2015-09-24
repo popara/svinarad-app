@@ -17,4 +17,5 @@ module.exports = bower-app = (app-name, deps) ->
     "ng-fastclick": "~1.0.2"
     "angular-ui-router.stateHelper": "~1.3.1"
     "prelude-browser-min": "http://gkz.github.io/prelude-ls/prelude-browser-min.js"
+    "ramda": "~0.17.1"
     } <<<< deps

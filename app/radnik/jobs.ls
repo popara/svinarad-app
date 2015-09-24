@@ -11,3 +11,9 @@ angular.module 'svinarad.radnik'
   is-assigned = (uid, j) --> uid is j.worker
   jbs <- jobsbystatus js.drafted .$loaded
   filter (is-assigned uid!), jbs
+
+
+.factory 'ApplyForJob' <[AuthUID MiniProfile]> ++ (uid, profile) ->
+  (job) ->
+    job.applicants[uid!] = profile!
+    job.$save! 

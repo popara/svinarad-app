@@ -15,7 +15,9 @@ main
       .content 
         .left 
           .description {{ job.description }}
+          .credits {{ job.credits }} RSD
           .applicants ima {{ job.applicants | cnt }} prijavljenih
         .right 
-          button(ui-sref="details({id:job.$id})") Prijavi se na posao
+          h2(ng-show="model.meApplied(job)") Vec si prijavljen/a 
+          button(ui-sref="details({id:job.$id})", ng-hide="model.meApplied(job)") Prijavi se na posao
       
