@@ -16,4 +16,9 @@ angular.module 'svinarad.radnik'
 .factory 'ApplyForJob' <[AuthUID MiniProfile]> ++ (uid, profile) ->
   (job) ->
     job.applicants[uid!] = profile!
-    job.$save! 
+    job.$save!
+    
+.factory 'RemoveApplicationForJob' <[AuthUID]> ++ (uid) ->
+  (job) ->
+    delete job.applicants[uid!]
+    job.$save!

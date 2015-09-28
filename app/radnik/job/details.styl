@@ -39,7 +39,7 @@
       span
         color gray-2
         font-size 14px
-        
+
 
     .where
       max-width 100px
@@ -54,3 +54,26 @@
 
     .description
       flex 1
+
+  .applicants
+    margin-top 20px
+
+    .applicant
+      transition all .4s ease-in
+      margin-top 5px
+      font-size 14px
+
+      &:hover
+        color success
+
+      &.ng-enter
+        background white
+      &.ng-enter-active
+        background darker-green
+
+      &.ng-leave
+        background brand-color
+        color darker-brand
+
+      &.ng-leave-active
+        height 0

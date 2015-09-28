@@ -2,15 +2,15 @@
   flow(column)
 
   section
-    background url('/img/landingPphoto.jpg') no-repeat brand-color
+    background url('/img/landingPphoto.jpg') no-repeat red
     background-position center bottom
     background-size cover
-    color gray-9
+    color s-white
 
     min-height 350px
 
   header
-    color darker-brand
+    color dark-red
     font-size 48px
     text-align center
     padding 30px 0
@@ -36,7 +36,7 @@
     text-shadow-color rgba(0, 0, 0, .2)
     cursor pointer
     outline none
-    color gray-8
+    color s-white
     border none
     padding 20px 30px
     font-size 20px
@@ -47,17 +47,17 @@
     transition all .3s ease-in
     &.crveni
       background brand-color
-      border-bottom-color darker-brand
+      border-bottom-color dark-red
       &:hover
-        background darker-brand
-        border-bottom-color lighter-brand
+        background dark-red
+        border-bottom-color tint(brand-color, 5%)
 
     &.plavi
-      background ligher-blue
-      border-bottom-color blue-color
+      background blue
+      border-bottom-color dark-blue
       &:hover
-        background blue-color
-        border-bottom-color ligher-blue
+        background dark-blue
+        border-bottom-color blue
 
 .overlay-content
   z-index 2
@@ -65,12 +65,12 @@
   padding-top 150px
 
 .shade-cover
-  background darker-brand
+  background dark-orange
   absolute top bottom left right
   opacity .4
 
 section.kako-radi-rad
-  background gray-8
+  background s-white
   color brand-color
   text-align center
 

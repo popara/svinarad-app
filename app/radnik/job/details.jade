@@ -26,6 +26,7 @@
           
           .application
             button.primary(ng-click="attempt(options.applyforjob(model))", ng-if="!options.meApplied(model)") Prijavljujem se za ovaj posao!
+            button.secondary(ng-click="attempt(options.removeapplication(model))", ng-if="options.meApplied(model)") Odjavljujem se od ovog posla!
 
     .right.profil 
       .hint Poslodavac

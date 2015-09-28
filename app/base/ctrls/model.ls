@@ -36,7 +36,7 @@ angular.module "app.controllers"
     $scope.pending = false
     $scope.last-error = e
     set-timeout apply-reset, 100
-    
+
 .controller 'ModelOptions' <[$scope model options]> ++ ($scope, model, options) !->
   $scope.pending = false
   $scope.model = model

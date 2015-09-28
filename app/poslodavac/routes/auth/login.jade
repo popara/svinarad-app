@@ -1,0 +1,15 @@
+h1 Login samo napred
+form(name="login")
+  .field 
+    label Email 
+    input(type="email", name="email", ng-model="email", placeholder="Email", ng-required="true")
+    
+  .field 
+    label Password
+    input(type="password", placeholder="Password", name="password", ng-model="password", ng-required="true")
+      
+  .field 
+    
+    button(ng-click="model.login(email, password)") Prijavite se 
+    
+  

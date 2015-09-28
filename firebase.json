@@ -1,5 +1,5 @@
 {
-  "firebase": "jonnyibiza",
+  "firebase": "svinarad",
   "public": "_public",
   "ignore": [
     "firebase.json",
@@ -8,34 +8,28 @@
     "**/bower_components/**"
   ],
   "rewrites": [{
-      "source": "/app",
-      "destination": "/clients.html"
+      "source": "/radnik",
+      "destination": "/radnik.html"
     }, {
-      "source": "/app/**",
-      "destination": "/clients.html"
+      "source": "/radnik/**",
+      "destination": "/radnik.html"
     }, {
       "source": "/",
       "destination": "/index.html"
     }, {
-      "source": "/expert",
-      "destination": "/providers.html"
+      "source": "/poslodavac",
+      "destination": "/poslodavac.html"
     }, {
-      "source": "/expert/**",
-      "destination": "/providers.html"
+      "source": "/poslodavac/**",
+      "destination": "/poslodavac.html"
     }, {
       "source": "/gallery",
       "destination": "/gallery.html"
     }, {
-      "source": "/canvas",
-      "destination": "/canvas.html"
+      "source": "/alija",
+      "destination": "/alija.html"
     }, {
-      "source": "/canvas/*",
-      "destination": "/canvas.html"
-    }, {
-      "source": "/wolf",
-      "destination": "/admin.html"
-    }, {
-      "source": "/wolf/**",
-      "destination": "/admin.html"
+      "source": "/alija/**",
+      "destination": "/alija.html"
   }]
 }

@@ -12,3 +12,7 @@ angular.module 'svinarad.poslodavac' <[
 .run <[$rootScope]> ++ ($rootScope) !->
   $rootScope.$on '$stateChangeError' (event, to-state, to-params, from-state, from-params, error) !->
     console.error \UI-Router error, error.stack
+
+.run <[$rootScope Auth]> ++ (root, auth) !->
+  auth.$on-auth (load) !->
+    root.auth = load

@@ -1,0 +1,109 @@
+hexagon(size, bgc)
+  offset = (size*0.289)
+  hexh = (size*.577)
+  half = (size*.5)
+  position: relative
+  width size
+  height hexh
+  background-color bgc
+  margin  0
+
+  &:before
+  &:after {
+    content ""
+    position absolute
+    width 0
+    border-left half solid transparent
+    border-right half solid transparent
+  }
+
+  &:before {
+    bottom 100%
+    border-bottom offset solid bgc
+  }
+
+
+  &:after {
+    top 100%
+    width 0
+    border-top offset solid bgc
+  }
+
+
+img-hexagon(size, border=0, bordercolor=black)
+  scalef = tan(30deg)
+  invscale = 1 / scalef
+  sqrt3 = 1.7320508075688772
+  sqrt2 = 1.4142135623730951
+
+  hexh = size / sqrt3
+  cap = size / sqrt2
+
+  half-hexh = hexh / 2
+  double-hexh = hexh * 2
+  offset = (size / sqrt2) / 2
+
+  bordersq = border * sqrt2
+  borderoffset = border / sqrt3
+  dblborder = border * 2
+
+  position relative
+  width size
+  height hexh
+  margin half-hexh 0
+  background-size auto (double-hexh  - (borderoffset * 4))
+  background-position center
+  border-left solid border bordercolor
+  border-right solid border bordercolor
+
+  > .hex-top
+  > .hex-bottom {
+    position absolute
+    z-index 1
+    width cap
+    height cap
+    overflow hidden
+    transform scaleY(scalef) rotate(-45deg)
+    background inherit
+    left ((size - cap) / 2) - border
+  }
+
+  > .hex-top:after
+  > .hex-bottom:after {
+    content ""
+    position absolute
+    width size - (border * 2)
+    height hexh - (border * scalef * 2)
+    transform rotate(45deg) scaleY(invscale) translateY( (half-hexh * -1) + borderoffset )
+    transform-origin 0 0
+    background inherit
+  }
+
+  .hex-top {
+    top offset * -1
+    border-top solid bordersq bordercolor
+    border-right solid bordersq bordercolor
+    &:after {
+      background-position center top
+    }
+  }
+
+  .hex-bottom {
+    bottom offset * -1
+
+    border-bottom solid bordersq bordercolor
+    border-left solid bordersq bordercolor
+
+    &:after {
+      background-position center bottom
+    }
+  }
+
+  &:after {
+    content ""
+    absolute top (border * scalef) left 0
+    width size - dblborder
+    height hexh - (dblborder * scalef)
+    z-index 2
+    background inherit
+  }

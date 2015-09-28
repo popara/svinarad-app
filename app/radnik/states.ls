@@ -7,26 +7,9 @@ angular.module "svinarad.radnik"
     url: '/dom'
     template-url: 'app/radnik/intro/intro.html'
     controller: 'Model'
+    restrict: authenticatedOnly
     resolve:
       model: 'Intro'
-
-  s do
-    name: 'details'
-    url: '/posao/{id}'
-    controller: 'ModelOptionsNext'
-    template-url: 'app/radnik/job/details.html'
-    resolve:
-      model: <[$stateParams JobById]> ++ (sp, jbid) -> jbid sp.id
-      options: <[ApplyForJob meApplied]> ++ (a, m) -> do
-        applyforjob: a
-        me-applied: m
-      period: -> 1ms
-    data: {next: '.confirmation'}
-    children:
-      * name: 'confirmation'
-        url: '/potvrda'
-        template-url: 'app/radnik/job/application-confirmation.html'
-      ...
 
 
 

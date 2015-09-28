@@ -1,0 +1,40 @@
+form.form.paper(name="newjob", ng-submit="options.submit(model)")
+  .field 
+    label Naslov 
+    input(type="text", ng-model="model.title", placeholder="Sta je posao, ukratko")
+      
+  .field 
+    label Opis 
+    textarea(rows="4", ng-model="model.description", placeholder="Jos malo detalja")
+
+  .field 
+    label Nadoknada
+    input(type="number", placeholder="Koliko ce radnik dobiti novca?", ng-model="model.credits")
+      
+  .field 
+    label Koliko se radi posao
+    input(type="text", placeholder="U satima", ng-model="model.total_working_hours")
+      
+  .field 
+    label Kada treba da se uradi posao
+    input(type="text", placeholder="Kog dana, u koliko casova?", ng-model="model.working_period")
+    
+  .field 
+    label Gde? 
+    input(type="text", placeholder="Adresa je najbolji indikator", ng-model="model.location.text")
+      
+    a(href="#") Pokazi tacnu lokaciju na mapi
+      
+  .field 
+    label Dodatne instrukcije za odabranog radnika
+    textarea(rows="4", placeholder="Kome da se javi, sta da ponese i tome slicno.", ng-model="model.final_instructions")
+      
+  .field 
+    label Jasni uslovi dobro uradjenog posla
+    textarea(rows="4", placeholder="Kako ce radnik biti ocenjen da je uradio svoj posao kako valja?", ng-model="model.success_condition")
+      
+  
+  .field.submit 
+    button.primary(type="submit") Postavi posao 
+      
+      
