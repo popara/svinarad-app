@@ -1,4 +1,7 @@
 .content
-  .first-time 
+  h1 {{ model }}
+  .first-time(ng-if="model.length == 0")
     h2 Vreme je da napravite vas prvi posao! 
     button.primary(ui-sref="newjob") + Napravi posao
+
+  .normal(ng-if="model.length")

@@ -9,6 +9,6 @@ angular.module "svinarad.poslodavac"
     restrict: authenticatedOnly
     controller: \Model
     resolve:
-      model: \MyProfile
+      model: \CreatedJobs
 
 .factory 'MyProfile' <[fo AuthUID]> ++ (fo, uid) -> fo "users/#{uid!}"

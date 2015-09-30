@@ -18,9 +18,17 @@ button
   background transparent
   color s-white
   cursor pointer
+  transition all .3s ease-in 
   &.primary
     background-color green
     font-weight 700
 
     &:hover
       background-color dark-turquise
+
+  &:disabled
+    color dark-s-white
+    background dark-silver
+
+    &:hover
+      background-color dark-silver

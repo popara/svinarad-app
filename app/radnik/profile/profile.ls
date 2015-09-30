@@ -1,6 +1,4 @@
 angular.module 'svinarad.radnik'
-.factory 'MyProfile' <[AuthUID fo]> ++ (uid, fo) -> fo "users/#{uid!}"
-.factory 'MiniProfile' <[MyProfile]> ++ (p) -> -> {p.name, p.$id, p.rating, p.avatar}
 .config <[stateHelperProvider authenticatedOnly]> ++ (state-helper-provider, authenticatedOnly) !->
   s = state-helper-provider.state
   s do

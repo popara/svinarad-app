@@ -15,6 +15,7 @@ angular.module "app.base" <[
     console.error \UI-Router to-state, to-params, error
   #
 .factory 'timestamp' -> -> moment!format 'x'
+.factory 'datetime' -> -> moment!format!
 .factory 'klog' ->
   ->
     console.log it
