@@ -8,17 +8,19 @@ angular.module "app.base"
   map set-id, obj-to-pairs firebase-object
 )
 .value "FIREBASE_URL" "https://#{CONFIG.FireBaseNode}.firebaseio.com"
-.factory "Firefire" <[FIREBASE_URL]> ++ (BASE_URL) -> ((body) -> new Firebase [BASE_URL, body].join '/')
+.factory "Firebase" <[$window]> ++ ($window) -> $window.Firebase
+.factory "Firefire" <[FIREBASE_URL $window]> ++ (BASE_URL, $window) ->
+  (body) -> new $window.Firebase [BASE_URL, body].join '/'
 
 .factory "FF" <[Firefire]> ++ id
 .factory "fireArray" <[$firebaseArray FF]> ++ ($firebaseArray, ff) ->
   (body, extension = {}) -> let fa = $firebaseArray.$extend extension
-    new fa ff body
+    fa ff body
 
 .factory "fireObject" <[$firebaseObject FF]> ++ ($firebaseObject, ff) ->
   (body, extension = {}) ->
     let fo = $firebaseObject.$extend extension
-      new fo ff body
+      fo ff body
 
 .factory 'fa' <[fireArray]> ++ id
 .factory 'fo' <[fireObject]> ++ id

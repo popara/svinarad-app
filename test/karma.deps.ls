@@ -13,5 +13,5 @@ deps =  do
   "sinon-chai": "^2.7.0"
   'karma-should': '^0.0.1'
   'angular-mocks': '1.4.5'
-
+  
 export deps

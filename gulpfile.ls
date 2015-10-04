@@ -26,7 +26,7 @@ var http-server
 gulp.task 'httpServer' ->
   http-server := bs.init do
     proxy: 'http://localhost:3474'
-    
+
 app-js = (app-name, root, task-name) ->
   gulp.task task-name, ->
     base = "./app/base/**/*.ls"
@@ -37,6 +37,7 @@ app-js = (app-name, root, task-name) ->
     app = gulp.src [baseinit, base, init, rest]
       .pipe plumber!
       .pipe gulp-filter -> it.path is not /\.json.ls$/
+      .pipe gulp-filter -> it.path is not /\.spec.ls$/
       .pipe gulp-livescript {prelude: true}
       .pipe gulp-concat "app.js"
       .pipe gulp-if production, gulp-uglify!

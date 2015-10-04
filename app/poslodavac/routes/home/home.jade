@@ -1,7 +1,7 @@
 .content
-  h1 {{ model }}
-  .first-time(ng-if="model.length == 0")
-    h2 Vreme je da napravite vas prvi posao! 
-    button.primary(ui-sref="newjob") + Napravi posao
+  h1(ng-if="anyLoading") Ucitava se 
+  
+  
+  h1(ng-if="model.profile") {{ model.profile }}
 
-  .normal(ng-if="model.length")
+  

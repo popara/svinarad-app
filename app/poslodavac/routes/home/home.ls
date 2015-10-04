@@ -7,8 +7,9 @@ angular.module "svinarad.poslodavac"
     url: '/'
     template-url: 'app/poslodavac/routes/home/home.html'
     restrict: authenticatedOnly
-    controller: \Model
+    controller: \AsyncModel
     resolve:
-      model: \CreatedJobs
-
+      model: <[MyProfile]> ++ (profile) -> do
+        profile: profile.$loaded!
+      
 .factory 'MyProfile' <[fo AuthUID]> ++ (fo, uid) -> fo "users/#{uid!}"

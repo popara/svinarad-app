@@ -4,7 +4,6 @@ module.exports = (karma) ->
       frameworks: ["mocha", "chai"]
       files:
         * "test/unit/polyfill.js"
-        * "test/unit/mockfirebase.js"
         * "_public/js/cfg.js"
         * "_public/js/vendor.js"
         * "_public/**/js/vendor.js"
@@ -12,8 +11,11 @@ module.exports = (karma) ->
         * "_public/js/index.js"
         * "_public/**/js/templates.js"
         * "_public/**/js/app.js"
+        * "test/firebase-utils/mockfirebase.js"
+        * "test/firebase-utils/*.js"
         * "test/unit/lib/**/*.ls"
         * "test/unit/**/*.spec.ls"
+        * "app/**/*.spec.ls"
 
       exclude: []
       reporters: ["nyan"]

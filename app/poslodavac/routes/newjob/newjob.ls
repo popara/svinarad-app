@@ -5,7 +5,7 @@ angular.module "svinarad.poslodavac"
     name: 'newjob'
     url: '/novi-posao'
     template-url: 'app/poslodavac/routes/newjob/newjob.html'
-
+    parent: 'home'
     controller: 'ModelOptionsNext'
     resolve:
       model: <[NewJob MiniProfile]> ++ (nj, profile) ->

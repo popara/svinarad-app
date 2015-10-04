@@ -1,94 +1,107 @@
 jobs:
-  $job_id:
-    status: JobStatus
-    employer:
-      $id: id
-      name: String
-      avatar:
-        plain: boolean
-        url: URL
-      rating: Integer
-    worker:
-      $id: id
-      name: String
-      avatar:
-        plain: boolean
-        url: URL
-      rating: Integer
-    percentage: Integer
-    title: String
-    description: String
-    credits: Integer
-    success_condition: String
-    final_instructions: String
-    total_working_hours: String
-    working_period: String
-    timers:
-      published: datetime
-      work_done: datetime
-      closed: datetime
-    location:
-      text: String
-      geo:
-        lat: Float
-        lng: Float
-    applicants:
-      $user_id:
-        name: String
-        avatar:
-          plain: boolean
-          url: URL
-        rating: Integer
-        when: datetime
-
-    cancelation_note: String
-    worker_cancelations:
-      $worker_id:
-        when: datetime
-        why: String
-    reviews:
-      $user_id:
-        when: datetime
-        note: String
-        rating: integer
-        supported: integer
+  drafts:
+    $job_id: JOB
+  open:
+    $job_id: JOB
+  drafted:
+    $job_id: JOB
+  workdone:
+    $job_id: JOB
+  workerpayed:
+    $job_id: JOB
+  finished:
+    $job_id: JOB
+  canceled:
+    $job_id: JOB
 
 job_history:
   $job_id:
     $change_id: AuditLog<job>
-
-
 users:
-  $user_id:
+  $user_id: USER
+
+USER =
+  name: String
+  first_name: String
+  last_name: String
+  rating: integer
+  avatar:
+    plain: boolean
+    url: URL
+  description: String
+  location: String
+  contacts:
+    email: Email
+    phone: Phoneno
+    whatsapp: boolean
+    viber: boolean
+    facebook: fb_id
+    twitter: twitter_id
+  worker:
+    affinities: String
+    skills: *
+      skill: String
+      points: integer
+    fullbodyshot:
+      url: URL
+  employer:
+    brandname: String
+  job_reviews:
+    written:
+      $job_id: rating
+    of_user:
+      $job_id: rating
+
+JOB =
+  status: JobStatus
+  employer:
+    $id: id
     name: String
-    first_name: String
-    last_name: String
-    rating: integer
     avatar:
       plain: boolean
       url: URL
-    description: String
-    location: String
-    contacts:
-      email: Email
-      phone: Phoneno
-      whatsapp: boolean
-      viber: boolean
-      facebook: fb_id
-      twitter: twitter_id
-    worker:
-      affinities: String
-      skills: *
-        skill: String
-        points: integer
-      fullbodyshot:
+    rating: Integer
+  worker:
+    $id: id
+    name: String
+    avatar:
+      plain: boolean
+      url: URL
+    rating: Integer
+  percentage: Integer
+  title: String
+  description: String
+  credits: Integer
+  success_condition: String
+  final_instructions: String
+  total_working_hours: String
+  working_period: String
+  timers:
+    published: datetime
+    work_done: datetime
+    closed: datetime
+  location:
+    text: String
+    geo:
+      lat: Float
+      lng: Float
+  applicants:
+    $user_id:
+      name: String
+      avatar:
+        plain: boolean
         url: URL
+      rating: Integer
+      when: datetime
 
-    employer:
-      brandname: String
-
-    job_reviews:
-      written:
-        $job_id: rating
-      of_user:
-        $job_id: rating
+  cancelation_note: String
+  worker_cancelations:
+    $worker_id:
+      when: datetime
+      why: String
+  reviews:
+    $user_id:
+      when: datetime
+      note: String
+      rating: integer
+      supported: integer
