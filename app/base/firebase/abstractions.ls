@@ -9,8 +9,10 @@ angular.module "app.base"
 )
 .value "FIREBASE_URL" "https://#{CONFIG.FireBaseNode}.firebaseio.com"
 .factory "Firebase" <[$window]> ++ ($window) -> $window.Firebase
-.factory "Firefire" <[FIREBASE_URL $window]> ++ (BASE_URL, $window) ->
-  (body) -> new $window.Firebase [BASE_URL, body].join '/'
+.factory "BaseFireRef" <[FIREBASE_URL Firebase]> ++ (BASE_URL, Firebase) ->
+  new Firebase BASE_URL
+.factory "Firefire" <[BaseFireRef]> ++ (BaseFireRef) ->
+  (body) -> BaseFireRef.child body 
 
 .factory "FF" <[Firefire]> ++ id
 .factory "fireArray" <[$firebaseArray FF]> ++ ($firebaseArray, ff) ->
