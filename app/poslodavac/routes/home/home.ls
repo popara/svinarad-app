@@ -9,7 +9,7 @@ angular.module "svinarad.poslodavac"
     restrict: authenticatedOnly
     controller: \AsyncModel
     resolve:
-      model: <[MyProfile]> ++ (profile) -> do
-        profile: profile.$loaded!
-      
+      model: <[MyProfile MyJobs]> ++ (profile, my-jobs) ->
+        R.merge {profile: profile.$loaded!}, my-jobs
+
 .factory 'MyProfile' <[fo AuthUID]> ++ (fo, uid) -> fo "users/#{uid!}"

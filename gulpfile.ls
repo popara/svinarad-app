@@ -158,13 +158,13 @@ gulp-tasks = (app-name, root, use-vendor-style=false) ->
     name
 
 eyes-on = (root, app-name) ->
-  gulp.watch "./app/#{root}/**/*.ls" ["#{app-name}:js:app"]
+  gulp.watch ["./app/#{root}/**/*.ls" "!./app/#{root}/**/*.spec.ls"], ["#{app-name}:js:app"]
   gulp.watch "./app/#{root}/**/*.styl" ["#{app-name}:css:app"]
   gulp.watch "./app/#{root}/**/*.jade" ["#{app-name}:templates"]
 
 eyes-on-app = (app-name) ->
   eyes-on \base app-name
-  gulp.watch "./app/#{app-name}/**/*.ls", ["#{app-name}:js:app"]
+  gulp.watch ["./app/#{app-name}/**/*.ls", "!./app/#{app-name}/**/*.spec.ls"] ["#{app-name}:js:app"]
   gulp.watch "./app/#{app-name}/**/*.styl" ["#{app-name}:css:app"]
   gulp.watch "./app/#{app-name}/**/*.jade" ["#{app-name}:templates"]
 
