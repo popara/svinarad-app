@@ -41,16 +41,17 @@ f = ([x, y]) ->
 
 fs = pts.map (p) -> f p
 
+f = !->
+  p.animate!center c0.0, c0.1 .after !->
+    @animate!center c1.0, c1.1 .after !->
+      @animate!center c2.0, c2.1 .after !->
+        @animate!center c3.0, c3.1 .after !->
+          @animate!center c4.0, c4.1 .after !->
+            @animate!center c5.0, c5.1 .after !->
 
 do
-  set-interval (!->
-    p.animate!center c0.0, c0.1 .after !->
-      @animate!center c1.0, c1.1 .after !->
-        @animate!center c2.0, c2.1 .after !->
-          @animate!center c3.0, c3.1 .after !->
-            @animate!center c4.0, c4.1 .after !->
-              @animate!center c5.0, c5.1 .after !->
-  ), 6000
+  set-interval f, 6000
+  f! 
 
 
 # image = c.rect 300 300

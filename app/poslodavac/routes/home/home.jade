@@ -1,11 +1,6 @@
-.content
-  h1(ng-if="anyLoading") Ucitava se 
-  h2(ng-if="anyErrors") Ops, ima problema 
-  div(ng-if="anyErrors") {{ errors | json }}
   
-  h1(ng-if="model.profile") {{ model.profile }}
-  
-  div(ng-repeat="j in model.open") 
-    h1 {{ j.title }}
+button(ui-sref="app.newjob") Novi Posao 
+div(ng-repeat="j in model.open") 
+  h1 {{ j.title }}
 
   

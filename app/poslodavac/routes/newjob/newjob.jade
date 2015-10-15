@@ -35,10 +35,13 @@ form.form.paper(name="newjob", ng-submit="attempt(options.submit(model))")
       
   .field 
     label Odmah objavi ovaj posao
-    input(type="checkbox", ng-model="model.status", ng-true-value="'open'", ng-false-value="'draft'")
+    input(type="checkbox", ng-model="model.status", ng-true-value="'open'", ng-false-value="'draft'", ng-init="model.status = 'open'")
   
   
   .field.submit 
-    button.primary(type="submit", ng-disabled="newjob.$invalid") Postavi posao 
+    button.primary(type="submit", ng-disabled="newjob.$invalid || pending") 
+      span(ng-hide="pending") Postavi posao 
+      span(ng-show="pending") Snima se. 
+        span.super-small.happy-tail sekundica
       
       

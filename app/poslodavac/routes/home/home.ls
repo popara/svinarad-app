@@ -3,8 +3,9 @@ angular.module "svinarad.poslodavac"
   s = state-helper-provider.state
 
   s do
+    parent: 'app'
     name: 'home'
-    url: '/'
+    url: '/home'
     template-url: 'app/poslodavac/routes/home/home.html'
     restrict: authenticatedOnly
     controller: \AsyncModel
@@ -12,4 +13,7 @@ angular.module "svinarad.poslodavac"
       model: <[MyProfile MyJobs]> ++ (profile, my-jobs) ->
         R.merge {profile: profile.$loaded!}, my-jobs
 
-.factory 'MyProfile' <[fo AuthUID]> ++ (fo, uid) -> fo "users/#{uid!}"
+  $url-router-provider.otherwise '/app/home'
+
+.config <[visorProvider]> ++ (visorProvider) !->
+  visorProvider.home-route = '/app/home'
