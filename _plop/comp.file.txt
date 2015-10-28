@@ -1,0 +1,2 @@
+angular.module '{{ dotCase app }}'
+.factory '{{ camelCase name }}' -> 

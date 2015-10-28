@@ -8,6 +8,6 @@ angular.module 'app.base'
 .factory 'OpenJobs' <[JobByStatus JobStatus]> ++ (jbs, js) ->
   jbs js.open
 .factory 'JobById' <[$fo FF]> ++ (fo, ff) ->
-  (id) -> fo <| ff "jobs/#{id}"
+  (status, id) -> fo <| ff "jobs/#{status}/#{id}"
 
 .factory 'Jobs' <[$fa FF]> ++ (fa, ff) -> fa <| ff 'jobs'

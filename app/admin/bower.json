@@ -23,5 +23,8 @@
     "prelude-browser-min": "http://gkz.github.io/prelude-ls/prelude-browser-min.js",
     "smooth-scroll": "1.0.1",
     "fastclick": "~1.0.6"
+  },
+  "resolutions": {
+    "angular": "1.4.5"
   }
 }

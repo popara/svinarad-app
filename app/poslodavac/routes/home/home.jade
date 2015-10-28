@@ -1,6 +1,6 @@
   
 button(ui-sref="app.newjob") Novi Posao 
-div(ng-repeat="j in model.open") 
-  h1 {{ j.title }}
+.job(ng-repeat="j in model.open") 
+  h1(ui-sref="app.job({s: j.status, id: j.$id})") {{ j.title }}
 
   

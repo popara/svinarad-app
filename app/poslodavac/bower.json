@@ -24,5 +24,8 @@
     "smooth-scroll": "1.0.1",
     "fastclick": "~1.0.6",
     "ramda": "~0.17.1"
+  },
+  "resolutions": {
+    "angular": "1.4.5"
   }
 }
