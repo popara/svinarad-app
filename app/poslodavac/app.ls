@@ -1,14 +1,19 @@
+{head, tail} = require \prelude-ls
+
 angular.module 'svinarad.poslodavac' <[
   app.base
   poslodavac.templates
   ngAnimate
 ]>
 
-.config <[$locationProvider]> ++ (lp) !-> lp.html5-mode true
-.run <[$rootScope]> ++ ($root) !->
-  e, new-State <- $root.$on '$stateChangeSuccess'
-  $root.now-state = new-State.name
+.run <[$rootScope JobStatus]> ++ (root, js) !->
+  isst = (a, b) -->
+    b and b.status is a
+  capt = -> ((head it).to-upper-case!) + (tail it)
+  add-is = (obj) ->
+    _.map-keys obj, (value, key) -> "is#{ capt key }"
 
-.run <[$rootScope]> ++ ($rootScope) !->
-  $rootScope.$on '$stateChangeError' (event, to-state, to-params, from-state, from-params, error) !->
-    console.error \UI-Router error, error.stack
+  _.merge root, add-is R.map-obj isst, js
+
+.factory 'UserById' <[fo]> ++ (fo) ->
+  (uid) -> fo "users/#{uid}"

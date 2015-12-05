@@ -27,9 +27,8 @@ angular.module 'svinarad.poslodavac'
   save = (job) ->
     if job.status is status.open
     then job.timers.published = now!
-
-    arr = fa "jobs/#{job.status}"
-    arr.$add job
+    console.log 'add' job.title 
+    fa "jobs" .$add job
 
   save-w-promise = R.head << save
 

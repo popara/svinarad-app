@@ -9,9 +9,10 @@ angular.module 'svinarad.radnik'
     template-url: 'app/radnik/job/details.html'
     resolve:
       model: <[$stateParams JobById]> ++ (sp, jbid) -> jbid sp.id
-      options: <[ApplyForJob RemoveApplicationForJob meApplied]> ++ (a, r, m) -> do
+      options: <[ApplyForJob RemoveApplicationForJob meApplied confirmJobDone]> ++ (a, r, m, jd) -> do
         applyforjob: a
         removeapplication: r
         me-applied: m
+        confirm-job-done: jd
       period: -> 1ms
     data: {next: '.'}

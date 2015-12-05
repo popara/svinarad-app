@@ -4,9 +4,12 @@ angular.module "svinarad.poslodavac"
   s do
     parent: 'app'
     name: 'job'
-    url: '/job/:id/:s'
+    url: '/job/:id'
     template-url: 'app/poslodavac/routes/job/job.html'
     controller: 'AsyncModel'
     resolve:
-      model: <[JobById $stateParams]> ++ (j, sp) -> do
-        job: (j sp.s, sp.id ).$loaded!
+      model: <[JobById $stateParams PickWorker reviewWorker dismissWorker]> ++ (j, sp, pw, rw, dw) -> do
+        job: (j sp.id ).$loaded!
+        pickworker: pw
+        review-worker: rw
+        dismiss-worker: dw

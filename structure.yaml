@@ -93,7 +93,6 @@ JOB =
         url: URL
       rating: Integer
       when: datetime
-
   cancelation_note: String
   worker_cancelations:
     $worker_id:

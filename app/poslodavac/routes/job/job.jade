@@ -1,2 +1,37 @@
+button(ui-sref="app.home") Svi poslovi 
 h1(ng-if="anyLoading") Uciatava se posao 
 h1 {{ model.job.title }}
+h3 {{ model.job.percentage }}
+h2 {{ model.job.description }}
+
+.applicants(ng-show="!model.job.worker")
+  h3 Prijavljeni za posao ({{ model.job.applicants | objlen }})
+  .applicants-list 
+    .applicant(ng-repeat="(id, appl) in model.job.applicants")
+      img.sm.avatar(ng-src="{{ appl.avatar.url }}")
+      h5 {{ appl.name }}
+      div {{ appl.rating }}
+      button(ng-click="model.pickworker(model.job, appl, id)") Odaberi radnika
+    
+
+.worker(ng-if="model.job.worker")
+  h1 RADNIK
+  img.sm.avatar(ng-src="{{ model.job.worker.avatar.url }}")
+  h5 {{ model.job.worker.name }}
+  div {{ model.job.worker.rating }}
+
+.workdone(ng-if="isWorkdone(model.job)")
+  h1 POSAO JE ZAVRSEN!
+  h1 Platite {{ model.job.worker.name  | padez:'dativ'  }} ako je posao dobro uradjen
+  hr 
+  h3 Ocenite {{ model.job.worker.name  | padez:'acusative' }}
+  
+  form(name="workerreview")
+    textarea(rows="4", cols="10", ng-model="review.note")
+    
+    div(ng-repeat="oc in [1, 2, 3, 4, 5]")
+      input(id="review{{oc}}", type="radio", name="rating", ng-model="review.rating", ng-value="oc") 
+      label(for="review{{oc}}") Ocen: {{ oc }}
+    button.ok(ng-click="model.reviewWorker(model.job, model.job.worker_id, review)") Zadovoljan sam uradjenim poslom! 
+    button.notok(ng-click="model.dismissWorker(model.job, model.job.worker_id, review)") Zadatak nije uradjen, i ja nisam zadovoljan.
+    

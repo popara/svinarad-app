@@ -13,7 +13,7 @@ html(ng-app="svinarad.poslodavac", lang="sr/sr")
       
     include ../base/global/favicon
   body
-    ui-view(ng-class="{{ nowState }}")
+    ui-view(class="{{ nowState | dashCase }}")
       
     script(src='../js/cfg.js')
     script(src='/poslodavac/js/vendor.js')

@@ -1,6 +1,20 @@
   
 button(ui-sref="app.newjob") Novi Posao 
-.job(ng-repeat="j in model.open") 
-  h1(ui-sref="app.job({s: j.status, id: j.$id})") {{ j.title }}
 
-  
+.jobs 
+  h1 Poslovi na koje se ljudi prijavljuju
+  .job(ng-repeat="j in model.jobs.open") 
+    h1(ui-sref="app.job({id: j.$id})") {{ j.title }}
+      span(ng-if="j.applicants") &nbsp;- ({{ j.applicants | objlen }} prijavljen)
+
+.jobs 
+  h1 Poslovi koji su u procesu izvrsavanja
+  .job(ng-repeat="j in model.jobs.drafted")
+    h1(ui-sref="app.job({id: j.$id})") {{ j.title }} 
+    h3 {{ j.percentage }}% gotovi
+
+.jobs 
+  h1 Poslovi koje treba da potvrdite i platite! 
+  .job(ng-repeat="j in model.jobs.workdone") 
+    h1(ui-sref="app.job({id: j.$id})") {{ j.worker.name }} - {{ j.title }}
+    
