@@ -7,4 +7,5 @@ angular.module "svinarad.radnik"
     template-url: 'app/radnik/routes/uncleared/uncleared.html'
     controller: 'AsyncModel'
     resolve:
-      model: -> {}
+      model: <[DoneJobs]> ++ (dj) -> do
+        jobs: dj

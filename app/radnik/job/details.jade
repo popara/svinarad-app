@@ -49,14 +49,14 @@
             h1 Ocenite vas odnos sa poslodavcem 
             form(name="review")
               p 
-                textarea(rows="4", cols="5", placeholder="Sta mislite o {{ model.job.employer.name | padez:'dativ'}}?")
+                textarea(rows="4", cols="5", ng-model="review.note", placeholder="Sta mislite o {{ model.job.employer.name | padez:'dativ'}}?")
               
               p
                div(ng-repeat="oc in [1, 2, 3, 4, 5]")
                 input(id="review{{oc}}", type="radio", name="rating", ng-model="review.rating", ng-value="oc") 
                 label(for="review{{oc}}") Ocen: {{ oc }}
 
-            button(ng-click="options.confirmpayment(model)") Potvrdjujem korektnu isplatu 
+            button(ng-click="options.confirmpayment(model, review)") Potvrdjujem korektnu isplatu 
             
     .right.profil 
       .hint Poslodavac

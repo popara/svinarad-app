@@ -19,7 +19,7 @@ angular.module 'svinarad.radnik'
   f = filter (is-w uid!)
   wd <- jobsbystatus js.workdone .$loaded
   wp <- jobsbystatus js.workerpayed .$loaded
-  
+
   (f wd) ++ (f wp)
 
 .factory 'ApplyForJob' <[AuthUID MiniProfile]> ++ (uid, profile) ->
@@ -45,6 +45,7 @@ angular.module 'svinarad.radnik'
 
 .factory 'confirmpayment' <[AuthUID JobStatus userReview]> ++ (uid, js, ur) ->
   (job, review) ->
-    <- ur uid!, job.employer_id, job.$id, review
+    <- ur uid!, job.employer_id, job.$id, review .then
     job.status = js.finished
+    console.log 'st'
     job.$save!

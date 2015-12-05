@@ -1,1 +1,5 @@
 h1 uncleared
+
+.uncleared-clear(ng-repeat="job in model.jobs")
+  h1(ui-sref="details({id: job.$id })") {{ job.title }}
+  
