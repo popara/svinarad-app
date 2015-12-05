@@ -1,14 +1,7 @@
 angular.module 'svinarad.poslodavac'
-.factory 'MyJobs' <[$fa Firefire AuthUID JobStatus]> ++ (fa, FF, uid, JobStatus) ->
-  mapf = (jobs, status) -->
-    jobs
-    |> R.filter (.status is status)
-
-  sts = R.values JobStatus
-  jobs <- (fa <| FF "jobs" .order-by-child 'employer_id' .equal-to uid! ).$loaded
-  R.zip-obj sts <| R.map (mapf jobs), sts
-
-
+.factory 'MyJobs' <[$fa FF AuthUID JobStatus]> ++ (fa, FF, uid, JobStatus) ->
+  (fa <| FF "jobs" .order-by-child 'employer_id' .equal-to uid!)
+  
 .factory 'PickWorker' <[JobStatus]> ++ (js) ->
   (job, applicant, id) ->
     job.worker = applicant

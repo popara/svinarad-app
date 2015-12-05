@@ -38,8 +38,6 @@ angular.module 'app.controllers' []
 
   promises = R.map (.1), promise-pairs
 
-
-
   $scope.any-error = false
   $scope.errors = {}
   $scope.model = R.merge {}, non-promises

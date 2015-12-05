@@ -1,7 +1,7 @@
 {split, head} = require \prelude-ls
 angular.module "app.base"
 .factory 'Users' <[fireArray]> ++ (fireArray) -> fireArray 'users'
-
+.factory 'UserById' <[fo]> ++ (fo) -> (uid) -> fo "users/#{uid}"
 .factory 'Auth' <[$firebaseAuth BaseFireRef]> ++ ($firebaseAuth, BaseFireRef) ->
    $firebaseAuth BaseFireRef
 

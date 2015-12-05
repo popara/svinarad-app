@@ -1,5 +1,6 @@
 {head, tail, keys, values} = require \prelude-ls
 
+angular.module "app.controllers" []
 angular.module "app.base" <[
   app.controllers
   firebase

@@ -34,14 +34,30 @@
             input(type="range", ng-model="model.percentage", from="0", to="100", ng-change="model.$save()")
             
             button(ng-click="attempt(options.confirmJobDone(model))") Zavrsio sam posao!
+            
           .workdone(ng-if="isWorkdone(model)  && model.worker_id == auth.uid")  
             h1 Uradili ste posao, sada cekamo ocenu i novac od poslodavaca
+            
           .workerreviewed(ng-if="isWorkerpayed(model) && model.worker_id == auth.uid")
             h1(ng-if="model.reviews[model.employer_id]")
               p Poslodavac vas je ocenio kao 
               p Ocena: {{ model.reviews[model.employer_id].rating }}
               p {{ model.reviews[model.employer_id].note }}
               
+          .payconfirm(ng-if="(isWorkdone(model) || isWorkerpayed(model)) && model.worker_id == auth.uid")
+            
+            h1 Ocenite vas odnos sa poslodavcem 
+            form(name="review")
+              p 
+                textarea(rows="4", cols="5", placeholder="Sta mislite o {{ model.job.employer.name | padez:'dativ'}}?")
+              
+              p
+               div(ng-repeat="oc in [1, 2, 3, 4, 5]")
+                input(id="review{{oc}}", type="radio", name="rating", ng-model="review.rating", ng-value="oc") 
+                label(for="review{{oc}}") Ocen: {{ oc }}
+
+            button(ng-click="options.confirmpayment(model)") Potvrdjujem korektnu isplatu 
+            
     .right.profil 
       .hint Poslodavac
       img(ng-src="{{ model.employer.avatar.url }}")

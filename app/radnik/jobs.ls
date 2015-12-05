@@ -14,6 +14,13 @@ angular.module 'svinarad.radnik'
   jbs <- jobsbystatus js.drafted .$loaded
   filter (is-assigned uid!), jbs
 
+.factory 'DoneJobs' <[AuthUID JobByStatus JobStatus]> ++ (uid, jobsbystatus, js) ->
+  is-w = (uid, j) --> uid is j.worker_id
+  f = filter (is-w uid!)
+  wd <- jobsbystatus js.workdone .$loaded
+  wp <- jobsbystatus js.workerpayed .$loaded
+  
+  (f wd) ++ (f wp)
 
 .factory 'ApplyForJob' <[AuthUID MiniProfile]> ++ (uid, profile) ->
   add-applicant = (id, profile, applicants) ->
@@ -40,4 +47,4 @@ angular.module 'svinarad.radnik'
   (job, review) ->
     <- ur uid!, job.employer_id, job.$id, review
     job.status = js.finished
-    job.$save! 
+    job.$save!

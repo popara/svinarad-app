@@ -11,8 +11,8 @@ angular.module "svinarad.poslodavac"
     controller: \AsyncModel
     resolve:
       model: <[MyProfile MyJobs]> ++ (profile, my-jobs) ->
-        msj <- my-jobs.then
-        R.merge {profile: profile.$loaded!}, {jobs: msj}
+        R.merge {profile: profile.$loaded!}, {jobs: my-jobs}
+
 
   $url-router-provider.otherwise '/app/home'
 

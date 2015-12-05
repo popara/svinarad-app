@@ -14,6 +14,3 @@ angular.module 'svinarad.poslodavac' <[
     _.map-keys obj, (value, key) -> "is#{ capt key }"
 
   _.merge root, add-is R.map-obj isst, js
-
-.factory 'UserById' <[fo]> ++ (fo) ->
-  (uid) -> fo "users/#{uid}"

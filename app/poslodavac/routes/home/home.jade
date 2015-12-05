@@ -3,18 +3,19 @@ button(ui-sref="app.newjob") Novi Posao
 
 .jobs 
   h1 Poslovi na koje se ljudi prijavljuju
-  .job(ng-repeat="j in model.jobs.open") 
+  .job(ng-repeat="j in model.jobs", ng-if="isOpen(j)") 
     h1(ui-sref="app.job({id: j.$id})") {{ j.title }}
       span(ng-if="j.applicants") &nbsp;- ({{ j.applicants | objlen }} prijavljen)
 
 .jobs 
   h1 Poslovi koji su u procesu izvrsavanja
-  .job(ng-repeat="j in model.jobs.drafted")
+  .job(ng-repeat="j in model.jobs", ng-if="isDrafted(j)")
     h1(ui-sref="app.job({id: j.$id})") {{ j.title }} 
     h3 {{ j.percentage }}% gotovi
 
 .jobs 
   h1 Poslovi koje treba da potvrdite i platite! 
-  .job(ng-repeat="j in model.jobs.workdone") 
+  .job(ng-repeat="j in model.jobs", ng-if="isWorkdone(j) || isWorkerpayed(j)") 
     h1(ui-sref="app.job({id: j.$id})") {{ j.worker.name }} - {{ j.title }}
+  
     

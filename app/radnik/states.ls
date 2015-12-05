@@ -25,4 +25,9 @@ angular.module "svinarad.radnik"
     data:
       next: 'intro'
 
+  s do
+    name: 'logout'
+    url: '/logout'
+    controller: <[Auth]> ++ (auth) !-> auth.$unauth!
+
   $url-router-provider.otherwise '/dom'
