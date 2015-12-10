@@ -4,7 +4,7 @@ main
 
   jobscont
     .job(ng-repeat="job in model.oj")
-      .title(ui-sref="details({id:job.$id})") {{ job.title }}
+      a.title(ui-sref="details({id:job.$id})") {{ job.title }}
       .micro.profil 
         img(ng-src="{{ job.employer.avatar.url }}")
         .name 
@@ -18,6 +18,6 @@ main
           .credits {{ job.credits }} RSD
           .applicants ima {{ job.applicants | cnt }} prijavljenih
         .right 
-          h2(ng-show="model.meApplied(job)") Vec si prijavljen/a 
+          h2(ng-show="model.meApplied(job)") Vec si prijavljen/a na ovaj ;)
           button(ui-sref="details({id:job.$id})", ng-hide="model.meApplied(job)") Prijavi se na posao
       

@@ -55,7 +55,7 @@ vendor-js = (app-name, root, task-name) ->
       .pipe gulp-filter -> it.path is /\.js$/
 
     s = streamqueue {+objectMode}
-      .done bower, gulp.src "app/#{app-name}/vendor/scripts/*.js"
+      .done bower, gulp.src ["app/base/vendor/scripts/*.js" "app/#{app-name}/vendor/scripts/*.js"]
       .pipe gulp-concat "vendor.js"
       .pipe gulp-if production, gulp-uglify!
       .pipe gulp.dest "./#{root}/#{app-name}/js"

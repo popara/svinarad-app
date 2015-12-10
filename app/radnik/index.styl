@@ -5,8 +5,8 @@ body
   flow(row)
   justify-content flex-start
   align-items flex-start
-
-  background-color rgba(255, 251, 206, 0.1)
+  background url('/img/rbg.svg') dark-red no-repeat top left;
+  background-size cover
 
 body > ui-view
   margin-top 30px
@@ -29,19 +29,19 @@ a
       width 100%
 
 
+h1
+  font-size 42px
+  margin-bottom 30px
+  font-weight 900
+  font-family Oswald
+  color s-white
+  span
+    color success
+    font-size 20px
 
 main
   flow(column)
 
-  h1
-    font-size 42px
-    margin-bottom 30px
-    font-weight 900
-    font-family Oswald
-
-    span
-      color success
-      font-size 20px
 
   jobscont
     flow(column-reverse)
@@ -57,6 +57,8 @@ main
   padding 30px
   width 100%
   background-color white
+  border-radius 10px
+  box-shadow 0 2px 5px 5px rgba(80,80,80,.29)
   flow(column)
 
   .title
@@ -96,7 +98,7 @@ main
   button
     outline none
     background-color success
-    color white
+    color dark-red
     height 40px
     border 2px darker-green solid
     border-radius 5px

@@ -40,3 +40,4 @@ angular.module "app.base"
   then moment parse-int time .format format
   else ''
 )
+.filter 'fromNow' -> (time) -> moment.utc time .from-now true 

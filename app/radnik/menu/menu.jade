@@ -1,12 +1,14 @@
-brand 
-  h3 &#9733; Svi Na Rad 
+//- brand 
+//-   h3 &#9733; Svi Na Rad 
 ribbon 
-  a(ui-sref="intro") Otvoreni poslovi
-  a(ui-sref="assigned") Poslovi za koje sam zadužen
-  a(ui-sref="uncleared") Neisplaceni zavrseni poslovi
-  a(ui-sref="history") Istorija poslova 
-  .divider 
-  a(ui-sref="profile") Profil 
-  .divider.bigger
-  a(ui-sref="logout") Odjava 
+  div(ng-if="auth")
+    a(ui-sref="intro") Otvoreni poslovi
+    a(ui-sref="assigned") Poslovi za koje sam zadužen
+    a(ui-sref="uncleared") Neisplaceni zavrseni poslovi
+    a(ui-sref="history") Istorija poslova 
+    .divider 
+    a(ui-sref="profile") Profil 
+    .divider.bigger
+    a(ui-sref="logout") Odjava 
   
+    

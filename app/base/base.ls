@@ -22,5 +22,8 @@ angular.module "app.base" <[
   $root.now-state = new-State.name
 
 .run <[Auth $rootScope]> ++ (Auth, scope) !->
+  scope.is-me = (id) -> false
+
   auth <-! Auth.$on-auth
   scope.auth = auth
+  scope.is-me = (id) -> id is auth.uid 

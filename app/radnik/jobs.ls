@@ -2,17 +2,9 @@
 
 angular.module 'svinarad.radnik'
 
-.factory 'AppliedJobs' <[AuthUID JobByStatus JobStatus]> ++ (uid, jobsbystatus, js) ->
-  have-applied = (uid, j) --> uid in keys j.applicants
-
-  jbs <- jobsbystatus js.open .$loaded
-  filter (have-applied uid!), jbs
-
-.factory 'AssignedJobs' <[AuthUID JobByStatus JobStatus]> ++ (uid, jobsbystatus, js) ->
-  is-assigned = (uid, j) --> uid is j.worker_id
-
-  jbs <- jobsbystatus js.drafted .$loaded
-  filter (is-assigned uid!), jbs
+.factory 'WorkerJobs' <[$fa FF]> ++ (fa, ff) ->
+  (id) ->
+    fa <| ff \jobs .order-by-child 'worker_id' .equal-to id
 
 .factory 'DoneJobs' <[AuthUID JobByStatus JobStatus]> ++ (uid, jobsbystatus, js) ->
   is-w = (uid, j) --> uid is j.worker_id
@@ -37,15 +29,26 @@ angular.module 'svinarad.radnik'
     delete job.applicants[uid!]
     job.$save!
 
-.factory 'confirmJobDone' <[AuthUID JobStatus]> ++ (uid, js) ->
+.factory 'confirmJobDone' <[AuthUID JobStatus timestamp]> ++ (uid, js, now) ->
   (job) ->
     job.percentage = 100
     job.status = js.workdone
+    job.timers.work_done = now!
     job.$save!
 
-.factory 'confirmpayment' <[AuthUID JobStatus userReview]> ++ (uid, js, ur) ->
+.factory 'confirmpayment' <[AuthUID JobStatus userReview timestamp]> ++ (uid, js, ur, now) ->
   (job, review) ->
     <- ur uid!, job.employer_id, job.$id, review .then
     job.status = js.finished
-    console.log 'st'
+    job.timers.closed = now!
+    job.$save!
+
+.factory 'cancelReason' <[timestamp]> ++ (now) ->
+  (why) -> {why, when: now!}
+.factory 'resignFromJob' <[AuthUID JobStatus cancelReason]> ++ (uid, js, cr) ->
+  (job, reason) -> let r = R.from-pairs [[uid!, cr reason]]
+    job.worker_cancelations = R.merge job.worker_cancelations, r
+    delete job.worker
+    delete job.worker_id
+    job.status = js.open
     job.$save!
