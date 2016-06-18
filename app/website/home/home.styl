@@ -1,93 +1,10 @@
-#hex
-  min-height 500px
+header
+  @extend .column
+  
+  min-height 50vh
+  background linear-gradient(top, red, dark-orange )
+  align-items center
+  justify-content center
 
-
-.glow
-  box-shadow 0 0 3px white
-
-.home
-  flow(column)
-
-
-
-  section
-    background dark-orange
-    background-position center bottom
-    background-size cover
-    color s-white
-
-    min-height 350px
-
-  header
-    color dark-red
-    font-size 48px
-    text-align center
-    padding 30px 0
-    font-family Oswald, Helvetica, Arial
-    font-weight 700
-
-  .intro
-    font-size 45px
-    text-align center
-    font-family Lobster, Georgia
-    text-shadow 0 2px 2px black
-    position relative
-    min-height 380px
-
-.cta
-  margin-top 90px
-
-.home
-  .intro a
-  button
-    font-family Oswald, Helvetica, Arial
-    text-decoration none
-    text-shadow-color rgba(0, 0, 0, .2)
-    cursor pointer
-    outline none
-    color s-white
-    border none
-    padding 20px 30px
-    font-size 20px
-    border-radius 5px
-    border-bottom 3px solid white
-    font-weight 700
-    margin 0 50px
-    transition all .3s ease-in
-    &.crveni
-      background brand-color
-      border-bottom-color dark-red
-      &:hover
-        background dark-red
-        border-bottom-color tint(brand-color, 5%)
-
-    &.plavi
-      background blue
-      border-bottom-color dark-blue
-      &:hover
-        background dark-blue
-        border-bottom-color blue
-
-.overlay-content
-  z-index 2
-  absolute top bottom left right
-  padding-top 150px
-  background url(/img/landingPphoto.jpg)
-
-.shade-cover
-  background dark-orange
-  z-index 3
-  absolute top bottom left right
-  opacity .6
-
-section.kako-radi-rad
-  background s-white
-  color brand-color
-  text-align center
-
-  h2
-    margin-top 60px
-    font-size 36px
-
-.step
-  min-height 130px
+  font-size 3em
+  color clouds
