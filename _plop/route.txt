@@ -1,8 +1,0 @@
-angular.module "svinarad.{{ dashCase app }}"
-.config <[stateHelperProvider authenticatedOnly]> ++ (state-helper-provider, authenticatedOnly) !->
-  s = state-helper-provider.state
-  s do
-    name: '{{ dashCase route }}'
-    url: '{{ url }}'
-    template-url: 'app/{{ dashCase app }}/routes/{{ dashCase route }}/{{ dashCase route }}.html'
-    controller: '{{ camelCase controller }}'

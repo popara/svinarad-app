@@ -1,7 +1,0 @@
-describe "{{ name }}" (,) !->
-  var {{ dashCase name }}
-  before-each module "{{ app }}"
-  before-each inject (_{{ dashCase name }}_) !-> {{ dashCase name }} := _{{ dashCase name }}_
-
-  it "Should be {{ name }}" !->
-    expect {{ dashCase name }} .to.be.ok

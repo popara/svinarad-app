@@ -1,5 +1,0 @@
-angular.module '{{ dashCase app}}'
-.directive '{{ camelCase name }}' -> do
-  restrict: 'E'
-  template-url: 'app/{{ app }}/components/{{ name }}/{{ name }}.html'
-  link: (scope) !->
