@@ -1,7 +1,8 @@
-require! <[gulp gulp-elm gulp-pug gulp-stylus gulp-rename fs live-server gulp-livescript]>
+require! <[gulp gulp-elm gulp-pug gulp-stylus gulp-rename fs live-server gulp-livescript gulp-util gulp-plumber]>
 
 make-elm = ->
   gulp.src "src/*.elm"
+    .pipe gulp-plumber!
     .pipe gulp-elm!
     .pipe gulp.dest './_public/js'
 
@@ -31,7 +32,7 @@ compile-stylus = ->
 
 
 compile-ls = ->
-  gulp.src "./src/*.ls"
+  gulp.src "./src/init/*.ls"
     .pipe gulp-livescript!
     .pipe gulp.dest './_public/js'
 
@@ -47,6 +48,7 @@ dev = (done) ->
   gulp.watch "./src/**/*.elm" <[elm]>
   gulp.watch "./src/**/*.styl" <[stylus]>
   gulp.watch "./src/*.pug" <[pug]>
+  gulp.watch "./src/init/*.ls" <[ls]>
   start-live-server!
 
 
@@ -55,4 +57,4 @@ gulp.task "elm" ["elm-init"] make-elm
 gulp.task "pug" compile-pug
 gulp.task "stylus" compile-stylus
 gulp.task "ls" compile-ls
-gulp.task "dev" <[elm pug stylus]> dev
+gulp.task "dev" <[elm pug stylus ls]> dev
