@@ -19,3 +19,5 @@ out/*
 server/*.js
 .divshot-cache/
 *.swp
+
+elm-stuff/*
