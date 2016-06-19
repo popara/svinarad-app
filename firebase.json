@@ -1,0 +1,16 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "./_public",
+    "rewrite" :
+      [ { "source" : ""
+        , "destination": "/index.html"
+        }
+      , {  "source" : "radnik"
+        , "destination": "/radnik.html"
+        }
+      ]
+  }
+}

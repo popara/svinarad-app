@@ -11,7 +11,7 @@ compile-pug = ->
     .filter (a) -> /elm$/.test a
     .for-each (file) ->
       gulp.src "./src/page.pug"
-        .pipe gulp-rename file
+        .pipe gulp-rename file.to-lower-case!
         .pipe gulp-pug pug-opts file
         .pipe gulp.dest "./_public/"
 
@@ -36,6 +36,9 @@ compile-ls = ->
     .pipe gulp-livescript!
     .pipe gulp.dest './_public/js'
 
+copy-assets = ->
+  gulp.src "./assets/**"
+    .pipe gulp.dest "./_public/"
 
 start-live-server = ->
   live-server.start do
@@ -49,6 +52,7 @@ dev = (done) ->
   gulp.watch "./src/**/*.styl" <[stylus]>
   gulp.watch "./src/*.pug" <[pug]>
   gulp.watch "./src/init/*.ls" <[ls]>
+  gulp.watch "./assets/**/*.*" <[assets]>
   start-live-server!
 
 
@@ -57,4 +61,5 @@ gulp.task "elm" ["elm-init"] make-elm
 gulp.task "pug" compile-pug
 gulp.task "stylus" compile-stylus
 gulp.task "ls" compile-ls
-gulp.task "dev" <[elm pug stylus ls]> dev
+gulp.task "assets" copy-assets
+gulp.task "dev" <[elm pug stylus ls assets]> dev
