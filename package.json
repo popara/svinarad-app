@@ -29,7 +29,10 @@
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.4.0",
     "gulp-util": "^3.0.7",
+    "jeet": "^6.1.2",
     "live-server": "^1.0.0",
-    "livescript": "^1.5.0"
+    "livescript": "^1.5.0",
+    "nib": "^1.1.0",
+    "rupture": "^0.6.1"
   }
 }

@@ -1,4 +1,6 @@
-require! <[gulp gulp-elm gulp-pug gulp-stylus gulp-rename fs live-server gulp-livescript gulp-util gulp-plumber]>
+require! <[
+  gulp gulp-elm gulp-pug gulp-stylus gulp-rename gulp-livescript gulp-util gulp-plumber
+  fs live-server nib rupture jeet]>
 
 make-elm = ->
   gulp.src "src/*.elm"
@@ -27,7 +29,7 @@ pug-opts = (file) ->
 
 compile-stylus = ->
   gulp.src "./src/styles/*.styl"
-    .pipe gulp-stylus!
+    .pipe gulp-stylus use: [nib!, jeet!, rupture!]
     .pipe gulp.dest './_public/css'
 
 
@@ -52,7 +54,7 @@ dev = (done) ->
   gulp.watch "./src/**/*.styl" <[stylus]>
   gulp.watch "./src/*.pug" <[pug]>
   gulp.watch "./src/init/*.ls" <[ls]>
-  gulp.watch "./assets/**/*.*" <[assets]>
+  gulp.watch "./assets/**" <[assets]>
   start-live-server!
 
 
