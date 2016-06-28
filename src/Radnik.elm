@@ -1,8 +1,11 @@
-module Radnik exposing (Model, view, update, Msg, init, main)
+module Radnik exposing (main)
 
-import Html exposing (div, text, Html, h1, a)
 import Html.App as Html
-import Html.Attributes exposing (href)
+import Radnik.View exposing (view)
+import Radnik.Model exposing (init, Model)
+import Radnik.Update exposing (update)
+import Radnik.Signup 
+
 
 main: Program Never
 main = Html.program
@@ -12,27 +15,6 @@ main = Html.program
   , subscriptions = subscriptions
   }
 
-
-type alias Model =
-  {
-  }
-
-type Msg
- = Noop
-
-init: (Model, Cmd Msg)
-init = {} ! []
-
-update: Msg -> Model -> (Model, Cmd Msg)
-update msg model = model ! []
-
--- VIEW
-
-view: Model -> Html Msg
-view model =  div []
-  [ h1 [] [ text "Svi Na Rad" ]
-  , a [ href "/" ] [ text "Start" ]
-  ]
 
 -- SUBS
 

@@ -11,6 +11,9 @@
       , {  "source" : "radnik"
         , "destination": "/radnik.html"
         }
+      , { "source" : "poslodavac"
+        , "destination": "/poslodavac.html"
+        }
       ]
   }
 }

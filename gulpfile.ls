@@ -13,6 +13,7 @@ compile-pug = ->
     .filter (a) -> /elm$/.test a
     .for-each (file) ->
       gulp.src "./src/page.pug"
+        .pipe gulp-plumber! 
         .pipe gulp-rename file.to-lower-case!
         .pipe gulp-pug pug-opts file
         .pipe gulp.dest "./_public/"
@@ -29,12 +30,14 @@ pug-opts = (file) ->
 
 compile-stylus = ->
   gulp.src "./src/styles/*.styl"
+    .pipe gulp-plumber!
     .pipe gulp-stylus use: [nib!, jeet!, rupture!]
     .pipe gulp.dest './_public/css'
 
 
 compile-ls = ->
   gulp.src "./src/init/*.ls"
+    .pipe gulp-plumber!
     .pipe gulp-livescript!
     .pipe gulp.dest './_public/js'
 

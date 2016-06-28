@@ -1,1 +1,1 @@
-Elm.Index.fullscreen!
+Elm.Main.fullscreen!

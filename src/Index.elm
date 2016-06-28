@@ -1,4 +1,4 @@
-module Index exposing (main)
+module Main exposing (main)
 
 import Index.Model exposing (Model, init)
 import Index.View exposing (view)
