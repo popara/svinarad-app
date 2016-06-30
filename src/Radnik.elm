@@ -1,10 +1,11 @@
-module Radnik exposing (main)
+port module Radnik exposing (main)
 
 import Html.App as Html
 import Radnik.View exposing (view)
 import Radnik.Model exposing (init, Model)
 import Radnik.Update exposing (update)
-import Radnik.Signup 
+import Radnik.Messages exposing (Msg(..))
+import Radnik.Signup
 
 
 main: Program Never
@@ -18,5 +19,8 @@ main = Html.program
 
 -- SUBS
 
-subscriptions: Model -> Sub msg
-subscriptions model = Sub.none
+subscriptions: Model -> Sub Msg
+subscriptions model =
+  jobs Jobs
+
+port jobs: ((List String) -> msg) -> Sub msg

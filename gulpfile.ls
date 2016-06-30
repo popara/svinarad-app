@@ -13,7 +13,7 @@ compile-pug = ->
     .filter (a) -> /elm$/.test a
     .for-each (file) ->
       gulp.src "./src/page.pug"
-        .pipe gulp-plumber! 
+        .pipe gulp-plumber!
         .pipe gulp-rename file.to-lower-case!
         .pipe gulp-pug pug-opts file
         .pipe gulp.dest "./_public/"
@@ -44,6 +44,8 @@ compile-ls = ->
 copy-assets = ->
   gulp.src "./assets/**"
     .pipe gulp.dest "./_public/"
+  gulp.src "./vendor/**"
+    .pipe gulp.dest "./_public/js/"
 
 start-live-server = ->
   live-server.start do
@@ -58,6 +60,7 @@ dev = (done) ->
   gulp.watch "./src/*.pug" <[pug]>
   gulp.watch "./src/init/*.ls" <[ls]>
   gulp.watch "./assets/**" <[assets]>
+  gulp.watch "./vendor/**" <[assets]>
   start-live-server!
 
 

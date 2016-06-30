@@ -2,6 +2,8 @@ html
   head
     title #{title}
     link(rel="stylesheet")&attributes({href:cssTarget})
+    script(type="text/javascript" src="/js/firebase.js")
+    script(type="text/javascript" src="/js/ramda.min.js")
   body
     script(type="text/javascript")&attributes({src:jsTarget})
     script(type="text/javascript")&attributes({src:jsTargetInit})

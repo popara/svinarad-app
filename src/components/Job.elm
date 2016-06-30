@@ -24,10 +24,10 @@ type alias Model =
   , value: Float
   }
 
-view: Html a
-view =
+view: String -> Html a
+view title =
   div [ class "job-item" ]
-  [ h1 [] [ text "Naslov posla" ]
+  [ h1 [] [ text title ]
   , div [ class "details" ]
     [ text "Detailji posla, kada gde"]
 
